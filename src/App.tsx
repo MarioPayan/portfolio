@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react'
+import {createTheme, CssBaseline, Grid, ThemeProvider} from '@mui/material'
+import LandingCard from './sections/LandingCard'
+import Skills from './sections/Skills'
+import {SECTIONS} from './API/data'
+import {getKeyFromLabel} from './utils/utils'
+import Experience from './sections/Experience'
+import Projects from './sections/Projects'
 
-function App() {
+const mode: 'light' | 'dark' = 'dark'
+
+const theme = createTheme({
+  typography: {fontFamily: '"Public Sans", sans-serif'},
+  palette: {
+    mode: mode,
+    primary: {
+      main: '#00bcd4',
+    },
+    secondary: {
+      main: '#ff0000',
+    },
+
+    background: mode === 'dark' ? {default: 'rgb(22, 28, 36)', paper: 'rgb(33, 43, 54)'} : {},
+  },
+})
+
+const App = () => {
+  const sectionKeys = SECTIONS.map(section => getKeyFromLabel(section.label))
+  const [section, setSection] = useState<string>(sectionKeys[0])
+  const [chill, setChill] = useState<boolean>(false)
+
+  useEffect(() => {
+    setChill(section === 'chill')
+  }, [section])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Grid item container spacing={2} padding={2}>
+        <Grid item xs={12}>
+          <LandingCard {...{section, setSection, chill, setChill}} />
+        </Grid>
+        <Grid item xs={12}>
+          {section === sectionKeys[1] && <Skills />}
+          {section === sectionKeys[2] && <Experience />}
+          {section === sectionKeys[3] && <Projects />}
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  )
 }
-
-export default App;
+export default App
