@@ -203,6 +203,13 @@ export const EXPERIENCE = [
     achievements: [],
   },
   {
+    where: 'Deft',
+    from: '2020-01',
+    to: '',
+    position: 'Co-founder & Teacher',
+    achievements: ['Build software and web apps on demand', 'Teach new technologies, good practices, tools, etc.'],
+  },
+  {
     where: 'CIER-Sur',
     from: '2016-01',
     to: '2016-06',
@@ -210,6 +217,19 @@ export const EXPERIENCE = [
     achievements: [
       'Build learning objects based on Javascript code with CSS',
       'Help to build a framework to reuse existing code on new learning objects',
+    ],
+  },
+]
+
+export const EDUCATION = [
+  {
+    where: 'Universidad del Valle',
+    from: '2012-01',
+    to: '2017-01',
+    position: 'B.S. Systems Engineering and Computer Science',
+    achievements: [
+      'National Awarded Academic Scholarship: Bachilleres por Colombia Mario Galán Gómez, an award given to the 70 best students in the country',
+      'Awarded Academic Scholarships for being at the top of the class',
     ],
   },
 ]
@@ -268,8 +288,8 @@ export const PROJECTS = [
   {
     label: 'Alert Logic mobile app',
     description: '',
-    image: '/images/projects/alert_logic_mobile.jpg',
-    // link: 'https://alertlogic.com/',
+    image: '/images/projects/alert_logic_mobile.png',
+    link: 'https://play.google.com/store/apps/details?id=com.alertlogic.secalert',
   },
   {
     label: 'Alert Logic internal services',

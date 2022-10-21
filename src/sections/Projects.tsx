@@ -3,7 +3,7 @@ import {Lock} from '@mui/icons-material'
 import {Grid, Typography, Paper, Button, Collapse} from '@mui/material'
 import {Box} from '@mui/system'
 import {PROJECTS} from '../API/data'
-import {getKeyFromLabel, image404, openInNewTab} from '../utils/utils'
+import {getAssetURL, getKeyFromLabel, image404, openInNewTab} from '../utils/utils'
 
 const Projects = () => {
   const [showDescription, setShowDescription] = useState<any>({})
@@ -23,7 +23,7 @@ const Projects = () => {
           <Paper elevation={5} sx={{position: 'relative', height: 280, borderRadius: '25px'}}>
             <img
               alt={project.label}
-              src={project.image || image404}
+              src={getAssetURL(project.image || image404)}
               style={{
                 position: 'absolute',
                 width: '-webkit-fill-available',

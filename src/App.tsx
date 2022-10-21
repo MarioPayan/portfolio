@@ -6,8 +6,10 @@ import {SECTIONS} from './API/data'
 import {getKeyFromLabel} from './utils/utils'
 import Experience from './sections/Experience'
 import Projects from './sections/Projects'
+import Education from './sections/Education'
+import About from './sections/About'
 
-const mode: 'light' | 'dark' = 'dark'
+const mode: any = 'dark'
 
 const theme = createTheme({
   typography: {fontFamily: '"Public Sans", sans-serif'},
@@ -41,9 +43,11 @@ const App = () => {
           <LandingCard {...{section, setSection, chill, setChill}} />
         </Grid>
         <Grid item xs={12}>
+          {section === sectionKeys[0] && <About />}
           {section === sectionKeys[1] && <Skills />}
           {section === sectionKeys[2] && <Experience />}
           {section === sectionKeys[3] && <Projects />}
+          {section === sectionKeys[4] && <Education />}
         </Grid>
       </Grid>
     </ThemeProvider>
