@@ -1,151 +1,90 @@
 import React from 'react'
-import {
-  BugReport,
-  Code,
-  Coffee,
-  Email,
-  Engineering,
-  Facebook,
-  GitHub,
-  Group,
-  Instagram,
-  IntegrationInstructions,
-  LaptopChromebook,
-  LinkedIn,
-  Moving,
-  Person,
-  School,
-  SelfImprovement,
-  Storage,
-  WhatsApp,
-  Work
-} from '@mui/icons-material'
 
 export const SECTIONS = [
-  {label: 'About Me', icon: <Person />},
-  {label: 'Skills', icon: <Code />},
-  {label: 'Experience', icon: <Moving />},
-  {label: 'Projects', icon: <Work />},
-  {label: 'Education', icon: <School />},
-  {label: 'Chill', icon: <Coffee />},
+  {label: 'About Me'},
+  {label: 'Skills'},
+  {label: 'Experience'},
+  {label: 'Projects'},
+  {label: 'Education'},
+  {label: 'Chill'},
 ]
 
 export const CHILL_SECTIONS = [
-  {label: 'About Me', icon: <Person />},
-  {label: 'Music', icon: <Person />},
-  {label: 'Traveling', icon: <Person />},
-  {label: 'Dogs', icon: <Person />},
-  {label: 'Geek', icon: <Person />},
-  {label: 'Roles', icon: <Person />},
-  {label: 'TV', icon: <Person />},
-  {label: 'Sports', icon: <Person />},
-  {label: 'Random', icon: <Person />},
+  {label: 'About Me'},
+  {label: 'Music'},
+  {label: 'Traveling'},
+  {label: 'Dogs'},
+  {label: 'Geek'},
+  {label: 'Roles'},
+  {label: 'TV'},
+  {label: 'Sports'},
+  {label: 'Random'},
 ]
 
 export const SOCIAL_LIST = [
-  {label: 'Email', url: 'mailto:mpayan.av@gmail.com', Icon: Email, chill: false},
-  {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', Icon: LinkedIn, chill: false},
-  {label: 'Git Hub', url: 'https://github.com/MarioPayan', Icon: GitHub, chill: false},
-  {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', Icon: WhatsApp, chill: true},
-  {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', Icon: Facebook, chill: true},
-  {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', Icon: Instagram, chill: true},
+  {label: 'Email', url: 'mailto:mpayan.av@gmail.com', chill: false},
+  {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', chill: false},
+  {label: 'Git Hub', url: 'https://github.com/MarioPayan', chill: false},
+  {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', chill: true},
+  {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', chill: true},
+  {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', chill: true},
 ]
 
 export const TECH_STACK = [
   {
     title: 'Coding',
-    icon: Code,
-    skills: [
-      {title: 'Python', imageUrl: 'python/python-original.svg'},
-      {title: 'Javascript', imageUrl: 'javascript/javascript-original.svg'},
-      {title: 'Typescript', imageUrl: 'typescript/typescript-original.svg'},
-    ],
+    skills: [{title: 'Python'}, {title: 'Javascript'}, {title: 'Typescript'}],
   },
   {
-    title: 'Frameworks',
-    icon: IntegrationInstructions,
-    skills: [
-      {title: 'React', imageUrl: 'react/react-original.svg'},
-      {title: 'Django', imageUrl: 'django/django-plain.svg'},
-      {title: 'Django REST', imageUrl: 'django/django-plain.svg'},
-      {title: 'AngularJS', imageUrl: 'angularjs/angularjs-original.svg'},
-    ],
+    title: 'Front End Frameworks',
+    skills: [{title: 'React'}, {title: 'NextJS'}, {title: 'AngularJS'}],
+  },
+  {
+    title: 'Back End Frameworks',
+    skills: [{title: 'Django'}, {title: 'Django REST'}],
   },
   {
     title: 'Markup',
-    icon: Code,
     skills: [
-      {title: 'HTML5', imageUrl: 'html5/html5-original.svg'},
-      {title: 'CSS3', imageUrl: 'css3/css3-original.svg'},
-      {title: 'Material UI', imageUrl: 'materialui/materialui-original.svg'},
-      {title: 'Bootstrap', imageUrl: 'bootstrap/bootstrap-original.svg'},
-      {title: 'Flexbox', imageUrl: ''},
+      {title: 'HTML5'},
+      {title: 'CSS3'},
+      {title: 'SASS'},
+      {title: 'Material UI'},
+      {title: 'Bootstrap'},
+      {title: 'Flexbox'},
     ],
   },
   {
     title: 'Database',
-    icon: Storage,
-    skills: [
-      {title: 'PostgreSQL', imageUrl: 'postgresql/postgresql-original.svg'},
-      {title: 'SQLite', imageUrl: 'sqlite/sqlite-original.svg'},
-    ],
+    skills: [{title: 'PostgreSQL'}, {title: 'SQLite'}],
   },
   {
     title: 'Version Control',
-    icon: GitHub,
-    skills: [
-      {title: 'Git', imageUrl: 'git/git-original.svg'},
-      {title: 'GitHub', imageUrl: 'github/github-original.svg'},
-      {title: 'GitLab', imageUrl: 'gitlab/gitlab-original.svg'},
-      {title: 'BitBucket', imageUrl: 'bitbucket/bitbucket-original.svg'},
-    ],
+    skills: [{title: 'Git'}, {title: 'GitHub'}, {title: 'GitLab'}, {title: 'BitBucket'}],
   },
-  {title: 'Scripting', icon: Code, skills: [{title: 'Bash', imageUrl: 'bash/bash-original.svg'}]},
+  {title: 'Scripting', skills: [{title: 'Bash'}]},
   {
     title: 'Testing',
-    icon: BugReport,
-    skills: [
-      {title: 'Cypress', imageUrl: ''},
-      {title: 'Jasmine', imageUrl: 'jasmine/jasmine-plain.svg'},
-      {title: 'Puppeteer', imageUrl: ''},
-      {title: 'Appium', imageUrl: ''},
-    ],
+    skills: [{title: 'Cypress'}, {title: 'Jasmine'}, {title: 'Puppeteer'}, {title: 'Appium'}, {title: 'Selenium'}],
   },
   {
     title: 'Operative System',
-    icon: LaptopChromebook,
-    skills: [
-      {title: 'OSx', imageUrl: 'apple/apple-original.svg'},
-      {title: 'Linux', imageUrl: 'linux/linux-original.svg'},
-    ],
+    skills: [{title: 'OSx'}, {title: 'Linux'}],
   },
 ]
 
 export const SOFT_STACK = [
   {
     title: 'Personal',
-    icon: SelfImprovement,
-    skills: [
-      {title: 'Willingness to Learn', imageUrl: 'python/python-original.svg'},
-      {title: 'Proactivity', imageUrl: 'python/python-original.svg'},
-    ],
+    skills: [{title: 'Willingness to Learn'}, {title: 'Proactivity'}],
   },
   {
     title: 'Methodical',
-    icon: Engineering,
-    skills: [
-      {title: 'Problem solving', imageUrl: 'react/react-original.svg'},
-      {title: 'Clean Code', imageUrl: 'react/react-original.svg'},
-    ],
+    skills: [{title: 'Problem solving'}, {title: 'Clean Code'}],
   },
   {
     title: 'Social',
-    icon: Group,
-    skills: [
-      {title: 'Communication', imageUrl: 'html5/html5-original.svg'},
-      {title: 'Teamwork', imageUrl: 'css3/css3-original.svg'},
-      {title: 'Adaptability', imageUrl: 'css3/css3-original.svg'},
-    ],
+    skills: [{title: 'Communication'}, {title: 'Teamwork'}, {title: 'Adaptability'}],
   },
 ]
 
@@ -235,66 +174,77 @@ export const EDUCATION = [
 ]
 
 export const PROJECTS = [
+  //https://portfolio-eta-ashy-82.vercel.app/
   {
     label: 'Under degree project',
     description:
       'Application of Augmented Reality for the Communication of Information related to the self-assessment process of the System Engineering Academic Program',
-    image: '/images/projects/uv.png',
+    image: 'images/projects/uv.png',
+    stack: [],
     link: '',
   },
   {
     label: 'Deft website',
     description: 'Landing page for Deft Soluciones company',
-    image: '/images/projects/deft.png',
+    image: 'images/projects/deft.png',
+    stack: [],
     // link: 'https://deftsoluciones.com/',
   },
   {
     label: 'Placa y Cédula (Android)',
     description: 'Android app to know when you can go outside during the pandemic situation in Colombia',
-    image: '/images/projects/pyc_android.webp',
+    image: 'images/projects/pyc_android.webp',
+    stack: [],
     link: 'https://play.google.com/store/apps/details?id=com.herokuapp.placa_y_cedula.twa',
   },
   {
     label: 'Placa y Cédula (Web)',
     description: 'Web app to know when you can go outside during the pandemic situation in Colombia',
-    image: '/images/projects/pyc_web.png',
+    image: 'images/projects/pyc_web.png',
+    stack: [],
     link: 'https://placa-y-cedula.herokuapp.com/',
   },
   {
     label: 'SVG Learning Tool',
     description: 'A simple tool to understand how SVG works that I made in my free time to help some mates',
-    image: '/images/projects/svg.png',
+    image: 'images/projects/svg.png',
+    stack: [],
     link: 'https://mariopayan.github.io/SvgLearningTool/',
   },
   {
-    label: 'This website',
+    label: 'This site',
     description: 'Website I built for fun',
-    image: '/images/profile_pixel.png',
+    image: 'images/profile_pixel.png',
+    stack: [],
     link: 'https://www.mariopayan.com/',
   },
   {
     label: 'Survey Tool',
     description:
       'A tool that allows characterizing users through surveys to find the perfect match for any specific need',
-    image: '/images/projects/wp.png',
+    image: 'images/projects/wp.png',
+    stack: [],
     // link: 'https://app.wellplayedresearch.com/',
   },
   {
     label: 'Alert Logic web app',
     description: '',
-    image: '/images/projects/alert_logic_web.png',
+    image: 'images/projects/alert_logic_web.png',
+    stack: [],
     // link: 'https://alertlogic.com/',
   },
   {
     label: 'Alert Logic mobile app',
     description: '',
-    image: '/images/projects/alert_logic_mobile.png',
+    image: 'images/projects/alert_logic_mobile.png',
+    stack: [],
     link: 'https://play.google.com/store/apps/details?id=com.alertlogic.secalert',
   },
   {
     label: 'Alert Logic internal services',
     description: '',
-    image: '/images/projects/alert_logic_heimdall.jpg',
+    image: 'images/projects/alert_logic_heimdall.jpg',
+    stack: [],
     // link: 'https://alertlogic.com/',
   },
 ]

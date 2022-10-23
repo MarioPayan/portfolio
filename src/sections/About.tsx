@@ -1,6 +1,5 @@
 import React from 'react'
 import {Paper, Typography} from '@mui/material'
-import UnderConstruction from '../components/UnderConstruction'
 
 const About = () => {
   return (
@@ -12,7 +11,6 @@ const About = () => {
           code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing
         </Typography>
       </Paper>
-      <UnderConstruction />
     </>
   )
 }

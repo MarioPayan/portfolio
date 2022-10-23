@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Lock} from '@mui/icons-material'
+import {ExpandLess, ExpandMore, Lock} from '@mui/icons-material'
 import {Grid, Typography, Paper, Button, Collapse} from '@mui/material'
 import {Box} from '@mui/system'
 import {PROJECTS} from '../API/data'
@@ -17,10 +17,20 @@ const Projects = () => {
   }
 
   return (
-    <Grid item container xs={12} spacing={2}>
+    <Grid item container xs={12} spacing={4}>
       {PROJECTS.map((project: any, i: number) => (
-        <Grid item xs={12} sm={6} md={3} key={i}>
-          <Paper elevation={5} sx={{position: 'relative', height: 280, borderRadius: '25px'}}>
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={i}>
+          <Paper
+            elevation={5}
+            sx={{
+              position: 'relative',
+              minHeight: 300,
+              height: 'auto',
+              maxWidth: 440,
+              minWidth: 300,
+              borderRadius: '25px',
+              mx: 'auto',
+            }}>
             <img
               alt={project.label}
               src={getAssetURL(project.image || image404)}
@@ -35,7 +45,7 @@ const Projects = () => {
                 position: 'absolute',
                 height: 1,
                 width: 1,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%)',
+                background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)',
                 borderRadius: '20px',
               }}/>
             <Grid item container sx={{position: 'absolute', height: 1, p: 1}} alignContent='flex-end'>
@@ -49,8 +59,10 @@ const Projects = () => {
                 </Collapse>
               </Grid>
               <Grid item container justifyContent='space-between'>
-                <Button onClick={() => handleShowDescription(getKeyFromLabel(project.label))}>
-                  {`${showDescription[getKeyFromLabel(project.label)] ? 'Hide' : 'Show'} Description`}
+                <Button
+                  onClick={() => handleShowDescription(getKeyFromLabel(project.label))}
+                  endIcon={showDescription[getKeyFromLabel(project.label)] ? <ExpandMore /> : <ExpandLess />}>
+                  Description
                 </Button>
                 <Button
                   disabled={!project.link}

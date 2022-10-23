@@ -66,11 +66,11 @@ const Timeline = ({items, colors, BulletIcon}: {items: any; colors: any; BulletI
                 zIndex: -1,
                 filter: 'blur(12px)',
               }}></Box>
-            <Typography variant='h3' sx={{pl: 1, width: 'max-content'}}>
+            <Typography variant='h3' sx={{pl: 1, width: {xs: 'unset', sm: 'max-content'}}}>
               {item.position}
               <Divider />
             </Typography>
-            <Grid item container sx={{pl: 4, width: 'max-content'}}>
+            <Grid item container sx={{pl: 4, width: {xs: 'unset', sm: 'max-content'}}}>
               <Grid item>
                 <Typography variant='h4'>
                   <DownText text='At' /> {item.where}

@@ -1,13 +1,10 @@
-import React from 'react'
+import React, {createElement} from 'react'
 import {Divider, Grid, Paper, Typography, useTheme} from '@mui/material'
 import {Box} from '@mui/system'
-import {getDevIconURL, getKeyFromLabel} from '../utils/utils'
+import {getKeyFromLabel} from '../utils/utils'
+import {getDevIconSrc, getIcon} from '../utils/icons'
 
-const SkillIconCards = ({
-  skills,
-}: {
-  skills: {title: string; icon: any; skills: {title: string; imageUrl: string}[]}[]
-}) => {
+const SkillIconCards = ({skills}: {skills: {title: string; skills: {title: string}[]}[]}) => {
   const theme = useTheme()
 
   const getMaxWidthCategory = (category: any, extra: number) => `${category.skills.length * 160 + extra}px !important`
@@ -32,10 +29,14 @@ const SkillIconCards = ({
     </Box>
   )
 
-  const SkillIconCard = ({title, imageUrl}: {title: string; imageUrl: string}) => (
+  const SkillIconCard = ({title}: {title: string}) => (
     <Box position='relative' sx={{width: 160, height: 140, ...grow}}>
-      <Grid item container direction='column' sx={{}}>
-        <img alt={title} style={{height: 70, width: 'auto', zIndex: 2, paddingTop: 20}} src={getDevIconURL(imageUrl)} />
+      <Grid item container direction='column'>
+        {getDevIconSrc(title) ? (
+          <img alt={title} style={{height: 70, width: 'auto', zIndex: 2, paddingTop: 20}} src={getDevIconSrc(title)} />
+        ) : (
+          createElement(getIcon(title), {sx: {height: 70, width: 'auto', zIndex: 2, paddingTop: 0}})
+        )}
         <Grid item sx={{py: 1, px: 2}}>
           <Divider />
         </Grid>
@@ -63,10 +64,10 @@ const SkillIconCards = ({
             elevation={5}
             sx={{
               borderRadius: 4,
-              backgroundColor: theme.palette.primary.dark, // rgb(0, 108, 156) rgb(0, 123, 85)
+              backgroundColor: theme.palette.primary.dark,
               width: 'fit-content',
             }}>
-            <CategoryIconBackground Icon={category.icon} />
+            <CategoryIconBackground Icon={getIcon(category.title)} />
             <Grid item container padding={2}>
               <Typography variant='h5' sx={{color: 'white', fontWeight: 700}}>
                 {category.title}

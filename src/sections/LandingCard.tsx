@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {createElement} from 'react'
 import {
   Avatar as AvatarMUI,
   Card,
@@ -16,6 +16,7 @@ import {
 import {Box} from '@mui/system'
 import {SECTIONS, SOCIAL_LIST} from '../API/data'
 import {getAssetURL, getKeyFromLabel, openInNewTab} from '../utils/utils'
+import {getIcon} from '../utils/icons'
 
 const LandingCard = ({section, setSection, chill}: {section: any; setSection: any; chill: boolean}) => {
   const MainCardIconButton = ({label, url, Icon}: {label: string; url: string; Icon: any}): JSX.Element => (
@@ -50,7 +51,7 @@ const LandingCard = ({section, setSection, chill}: {section: any; setSection: an
         <Stack direction='row' spacing={1} flexWrap='wrap' justifyContent='right' sx={{minWidth: 150}}>
           {SOCIAL_LIST.map(social => (
             <Collapse in={chill === social.chill} orientation='horizontal' key={getKeyFromLabel(social.label)}>
-              <MainCardIconButton {...social} />
+              <MainCardIconButton {...social} Icon={getIcon(social.label)} />
             </Collapse>
           ))}
         </Stack>
@@ -112,7 +113,7 @@ const LandingCard = ({section, setSection, chill}: {section: any; setSection: an
           component='img'
           height={220}
           image={getAssetURL('images/cover.jpg')}
-          alt='green iguana' //TODO: what
+          alt='Cover'
           sx={{filter: 'blur(4px)'}}/>
       </Grid>
 
@@ -137,7 +138,7 @@ const LandingCard = ({section, setSection, chill}: {section: any; setSection: an
                     {tab.label}
                   </Typography>
                 }
-                icon={tab.icon}
+                icon={createElement(getIcon(tab.label), {})}
                 iconPosition='start'
                 sx={{fontWeight: 800, px: 2}}/>
             ))}

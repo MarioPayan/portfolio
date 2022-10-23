@@ -8,6 +8,7 @@ import Experience from './sections/Experience'
 import Projects from './sections/Projects'
 import Education from './sections/Education'
 import About from './sections/About'
+import UnderConstruction from './components/UnderConstruction'
 
 const mode: any = 'dark'
 
@@ -50,6 +51,7 @@ const App = () => {
           {section === sectionKeys[4] && <Education />}
         </Grid>
       </Grid>
+      <UnderConstruction />
     </ThemeProvider>
   )
 }
