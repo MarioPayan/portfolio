@@ -4,7 +4,7 @@ import {getKeyFromLabel} from '../utils/utils'
 import Timeline from '../components/Timeline'
 import {School} from '@mui/icons-material'
 
-const Education = () => {
+const Education = (): JSX.Element => {
   const colors = {
     [getKeyFromLabel('Universidad del Valle')]: 'rgba(210, 0, 0, 0.5)',
   }

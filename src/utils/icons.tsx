@@ -71,7 +71,7 @@ const icons = {
   [getKeyFromLabel('Communication')]: Group,
   [getKeyFromLabel('Teamwork')]: Group,
   [getKeyFromLabel('Adaptability')]: Group,
-} as any
+}
 
 const devIcons = {
   // Tech
@@ -103,7 +103,7 @@ const devIcons = {
   [getKeyFromLabel('OSx')]: getDevIconURL('apple/apple-original.svg'),
   [getKeyFromLabel('Linux')]: getDevIconURL('linux/linux-original.svg'),
   [getKeyFromLabel('Bash')]: getDevIconURL('bash/bash-original.svg'),
-} as any
+}
 
 export const getIcon = (label: string) => icons[getKeyFromLabel(label)]
 export const getDevIconSrc = (label: string) => devIcons[getKeyFromLabel(label)]

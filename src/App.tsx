@@ -10,7 +10,7 @@ import Education from './sections/Education'
 import About from './sections/About'
 import UnderConstruction from './components/UnderConstruction'
 
-const mode: any = 'dark'
+const mode: 'light' | 'dark' = 'dark'
 
 const theme = createTheme({
   typography: {fontFamily: '"Public Sans", sans-serif'},
@@ -19,15 +19,12 @@ const theme = createTheme({
     primary: {
       main: '#00bcd4',
     },
-    secondary: {
-      main: '#ff0000',
-    },
 
     background: mode === 'dark' ? {default: 'rgb(22, 28, 36)', paper: 'rgb(33, 43, 54)'} : {},
   },
 })
 
-const App = () => {
+const App = (): JSX.Element => {
   const sectionKeys = SECTIONS.map(section => getKeyFromLabel(section.label))
   const [section, setSection] = useState<string>(sectionKeys[0])
   const [chill, setChill] = useState<boolean>(false)

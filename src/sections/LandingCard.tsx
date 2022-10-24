@@ -18,14 +18,18 @@ import {SECTIONS, SOCIAL_LIST} from '../API/data'
 import {getAssetURL, getKeyFromLabel, openInNewTab} from '../utils/utils'
 import {getIcon} from '../utils/icons'
 
-const LandingCard = ({section, setSection, chill}: {section: any; setSection: any; chill: boolean}) => {
+export type Content = {Avatar: JSX.Element; subtitle: string}
+export type SetSection = (section: string) => void
+export type LandingCard = {section: string; setSection: SetSection; chill: boolean}
+
+const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => {
   const MainCardIconButton = ({label, url, Icon}: {label: string; url: string; Icon: any}): JSX.Element => (
     <IconButton aria-label={label} sx={{color: 'whitesmoke'}} onClick={() => openInNewTab(url)}>
       <Icon fontSize='large' />
     </IconButton>
   )
 
-  const Content = ({Avatar, subtitle}: {Avatar: any; subtitle: string}) => (
+  const Content = ({Avatar, subtitle}: Content) => (
     <Grid item container xs={12} spacing={2} sx={{position: 'absolute', zIndex: 2, height: 1, pl: 4, pr: 1, pb: 1}}>
       <Grid item container direction='column' xs={12} sm='auto' justifyContent='flex-end' alignContent='center'>
         {Avatar}

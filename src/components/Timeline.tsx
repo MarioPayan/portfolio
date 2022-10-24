@@ -12,8 +12,12 @@ import {Box, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, Typograp
 import {KeyboardDoubleArrowRight} from '@mui/icons-material'
 import {getKeyFromLabel} from '../utils/utils'
 
-const Timeline = ({items, colors, BulletIcon}: {items: any; colors: any; BulletIcon: any}) => {
-  const sortFrom = (a: any, b: any): number => {
+export type TimeLineItem = {where: string; from: string; to: string; position: string; achievements: string[]}
+export type Colors = {[key: string]: string}
+export type Timeline = {items: TimeLineItem[]; colors: Colors; BulletIcon: React.ComponentType}
+
+const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
+  const sortFrom = (a: TimeLineItem, b: TimeLineItem): number => {
     return new Date(b.from).getTime() - new Date(a.from).getTime()
   }
 
@@ -30,7 +34,7 @@ const Timeline = ({items, colors, BulletIcon}: {items: any; colors: any; BulletI
   const changeDateFormat = (date: string) => {
     const [year, month] = date.split('-')
 
-    return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString('en-US', {month: 'short'} as any)} ${year}`
+    return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString('en-US', {month: 'short'})} ${year}`
   }
 
   const dateDiff = (dateA: string, dateB: string): string => {
@@ -48,7 +52,7 @@ const Timeline = ({items, colors, BulletIcon}: {items: any; colors: any; BulletI
 
   return (
     <TimelineMUI sx={leftAlignTimeline}>
-      {items.sort(sortFrom).map((item: any, i: number) => (
+      {items.sort(sortFrom).map((item: TimeLineItem, i: number) => (
         <TimelineItem key={i}>
           <TimelineSeparator>
             <TimelineDot color='primary'>
@@ -87,7 +91,7 @@ const Timeline = ({items, colors, BulletIcon}: {items: any; colors: any; BulletI
               </Grid>
             </Grid>
             <List dense>
-              {item.achievements.map((achievement: any, i: number) => (
+              {item.achievements.map((achievement: string, i: number) => (
                 <ListItem key={i}>
                   <ListItemIcon sx={{minWidth: 0, pr: 1}}>
                     <KeyboardDoubleArrowRight />

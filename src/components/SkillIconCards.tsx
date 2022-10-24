@@ -4,10 +4,12 @@ import {Box} from '@mui/system'
 import {getKeyFromLabel} from '../utils/utils'
 import {getDevIconSrc, getIcon} from '../utils/icons'
 
-const SkillIconCards = ({skills}: {skills: {title: string; skills: {title: string}[]}[]}) => {
-  const theme = useTheme()
+export type Skill = {title: string}
+export type Category = {title: string; skills: Skill[]}
+export type SkillIconCards = {categories: Category[]; backgroundColor: string}
 
-  const getMaxWidthCategory = (category: any, extra: number) => `${category.skills.length * 160 + extra}px !important`
+const SkillIconCards = ({categories, backgroundColor}: SkillIconCards): JSX.Element => {
+  const getMaxWidthCategory = (category: Category, extra: number) => `${category.skills.length * 160 + extra}px !important`
 
   const grow = {
     transition: 'transform .5s, box-shadow 1s',
@@ -50,7 +52,7 @@ const SkillIconCards = ({skills}: {skills: {title: string; skills: {title: strin
 
   return (
     <Grid item container xs={12}>
-      {skills.map(category => (
+      {categories.map(category => (
         <Grid
           item
           container
@@ -64,7 +66,7 @@ const SkillIconCards = ({skills}: {skills: {title: string; skills: {title: strin
             elevation={5}
             sx={{
               borderRadius: 4,
-              backgroundColor: theme.palette.primary.dark,
+              backgroundColor: backgroundColor,
               width: 'fit-content',
             }}>
             <CategoryIconBackground Icon={getIcon(category.title)} />

@@ -1,13 +1,16 @@
+import {useTheme} from '@mui/material'
 import React from 'react'
 
 import {SOFT_STACK, TECH_STACK} from '../API/data'
 import SkillIconCards from '../components/SkillIconCards'
 
-const Skills = () => {
+const Skills = (): JSX.Element => {
+  const theme = useTheme()
+
   return (
     <>
-      <SkillIconCards skills={TECH_STACK} />
-      <SkillIconCards skills={SOFT_STACK} />
+      <SkillIconCards categories={TECH_STACK} backgroundColor={theme.palette.primary.dark} />
+      <SkillIconCards categories={SOFT_STACK} backgroundColor={theme.palette.secondary.dark} />
     </>
   )
 }

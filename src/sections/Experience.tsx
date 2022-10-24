@@ -4,7 +4,7 @@ import {getKeyFromLabel} from '../utils/utils'
 import Timeline from '../components/Timeline'
 import {Work} from '@mui/icons-material'
 
-const Experience = () => {
+const Experience = (): JSX.Element => {
   const colors = {
     [getKeyFromLabel('Redux')]: 'rgba(9, 66, 156, 0.5)',
     [getKeyFromLabel('Deft')]: 'rgba(0, 255, 255, 0.5)',

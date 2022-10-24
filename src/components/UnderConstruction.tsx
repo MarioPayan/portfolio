@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Dialog, DialogTitle, DialogContentText, DialogActions, Button, DialogContent} from '@mui/material'
 
-const UnderConstruction: any = () => {
+const UnderConstruction = (): JSX.Element => {
   const [openModal, setOpenModal] = useState(true)
   //TODO: Cookies
   return (

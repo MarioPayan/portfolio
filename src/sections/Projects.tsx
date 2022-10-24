@@ -5,8 +5,10 @@ import {Box} from '@mui/system'
 import {PROJECTS} from '../API/data'
 import {getAssetURL, getKeyFromLabel, image404, openInNewTab} from '../utils/utils'
 
-const Projects = () => {
-  const [showDescription, setShowDescription] = useState<any>({})
+export type Project = {label: string; description: string; image: string; stack: string[]; link?: string}
+
+const Projects = (): JSX.Element => {
+  const [showDescription, setShowDescription] = useState<{[key: string]: boolean}>({})
 
   const handleShowDescription = (key: string) => {
     if (key in showDescription) {
@@ -18,7 +20,7 @@ const Projects = () => {
 
   return (
     <Grid item container xs={12} spacing={4}>
-      {PROJECTS.map((project: any, i: number) => (
+      {PROJECTS.map((project: Project, i: number) => (
         <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={i}>
           <Paper
             elevation={5}
