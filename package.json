@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "mario_payan",
   "homepage": "https://mariopayan.com",
   "version": "0.1.0",
   "private": true,
@@ -29,9 +29,7 @@
     "eject": "react-scripts eject",
     "lint": "npm run prettier && npm run eslint 2>/dev/null",
     "prettier": "node ./node_modules/prettier/bin-prettier.js --write **/*.{ts,tsx,scss,css,json}",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +54,6 @@
     "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.10",
-    "gh-pages": "^4.0.0",
     "prettier": "2.7.1",
     "typescript": "^4.8.4"
   }
