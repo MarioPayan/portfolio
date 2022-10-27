@@ -1,31 +1,75 @@
 import React from 'react'
-import {Grid, Paper, Typography} from '@mui/material'
+import {Grid, IconButton, Paper, Typography} from '@mui/material'
+import {SOCIAL_LIST} from '../API/data'
+import {getKeyFromLabel, openInNewTab} from '../utils/utils'
+import {getIcon} from '../utils/icons'
 
-const About = (): JSX.Element => {
+const About = ({chill}: {chill: boolean}): JSX.Element => {
+  const CardItem = ({children}: {children: any}) => (
+    <Grid item xs>
+      <Paper elevation={5}>
+        <Grid item container padding={3}>
+          {children}
+        </Grid>
+      </Paper>
+    </Grid>
+  )
+
+  const Title = ({label}: {label: string}) => (
+    <Typography variant='h5' paddingBottom={2}>
+      {label}
+    </Typography>
+  )
+
+  const Social = ({label, url, Icon}: {label: string; url: string; Icon: any}): JSX.Element => (
+    <IconButton aria-label={label} sx={{color: 'whitesmoke'}} onClick={() => openInNewTab(url)}>
+      <Icon fontSize='large' />
+      <Typography>{label}</Typography>
+    </IconButton>
+  )
   return (
-    <>
-      <Paper elevation={5}>
-        <Grid item container padding={5}>
-          <Grid item xs={8}>
-            <Typography variant='h3'>Hey!</Typography>
-          </Grid>
-          <Grid item xs={8}>
-            <Typography variant='h3'>I&apos;m Mario Payan</Typography>
-          </Grid>
+    <Grid item container xs={12} spacing={3}>
+      <CardItem>
+        <Grid item xs={12}>
+          <Title label='Hey!' />
+          <Typography>I&apos;m Mario Payan</Typography>
         </Grid>
-      </Paper>
-      <Paper elevation={5}>
-        <Grid item container padding={5}>
-          <Grid item xs={8}>
-            <Typography variant='h5'>
-              A Fullstack developer with focus on software development, algorithms design, software as a service and
-              clean code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and
-              code writing
-            </Typography>
-          </Grid>
+      </CardItem>
+      <CardItem>
+        <Grid item xs={12}>
+          <Title label="I'm a" />
+          <Typography>Software Developer</Typography>
+          <Typography>Full Stack Engineer</Typography>
+          <Typography>Tech Lead Developer</Typography>
         </Grid>
-      </Paper>
-    </>
+      </CardItem>
+      <CardItem>
+        <Grid item xs={12}>
+          <Title label='About' />
+          <Typography>
+            A Fullstack developer with focus on software development, algorithms design, software as a service and clean
+            code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code
+            writing
+          </Typography>
+        </Grid>
+      </CardItem>
+      <CardItem>
+        <Grid item xs={12}>
+          <Title label='From' />
+          <Typography>Colombia</Typography>
+        </Grid>
+      </CardItem>
+      <CardItem>
+        <Grid item xs={12}>
+          <Title label='Social' />
+          {SOCIAL_LIST.map(
+            social => social.chill === chill && (
+              <Social {...social} Icon={getIcon(social.label)} key={getKeyFromLabel(social.label)} />
+            )
+          )}
+        </Grid>
+      </CardItem>
+    </Grid>
   )
 }
 

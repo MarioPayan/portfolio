@@ -29,12 +29,30 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
     </IconButton>
   )
 
+  const avatarCommonProps = {
+    alt: 'Mario Payan',
+    sx: {
+      width: {xs: 140, sm: 200},
+      mt: 2,
+      height: 'auto',
+      borderStyle: 'solid',
+      borderColor: 'whitesmoke',
+    },
+  }
+
   const Content = ({Avatar, subtitle}: Content) => (
     <Grid item container xs={12} spacing={2} sx={{position: 'absolute', zIndex: 2, height: 1, pl: 4, pr: 1, pb: 1}}>
       <Grid item container direction='column' xs={12} sm='auto' justifyContent='flex-end' alignContent='center'>
         {Avatar}
       </Grid>
-      <Grid item container direction='column' xs='auto' justifyContent='flex-end' sx={{height: 1, pb: 5}}>
+      <Grid
+        item
+        container
+        direction='column'
+        xs='auto'
+        justifyContent='flex-end'
+        alignContent='center'
+        sx={{height: {xs: 'auto', sm: 1}, width: {xs: 1, sm: 'auto'}, pb: 5}}>
         <Typography
           variant='h4'
           color='whitesmoke'
@@ -42,7 +60,7 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
             fontWeight: 700,
             lineHeight: '1.5',
             maxWidth: 210,
-            display: {xs: 'none', sm: 'flex'},
+            display: 'flex',
           }}>
           Mario Payan
         </Typography>
@@ -67,38 +85,14 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
     <Card sx={{position: 'relative', borderRadius: 4}}>
       <Fade in={!chill}>
         {Content({
-          Avatar: (
-            <AvatarMUI
-              alt='Mario Payan'
-              src={getAssetURL('images/profile.jpg')}
-              variant='circular'
-              sx={{
-                width: 200,
-                mt: 2,
-                height: 'auto',
-                borderStyle: 'solid',
-                borderColor: 'whitesmoke',
-              }}/>
-          ),
+          Avatar: <AvatarMUI src={getAssetURL('images/profile.jpg')} variant='circular' {...avatarCommonProps} />,
           subtitle: 'Full Stack Engineer ● Tech Lead Developer',
         })}
       </Fade>
 
       <Fade in={chill}>
         {Content({
-          Avatar: (
-            <AvatarMUI
-              alt='Mario Payan'
-              src={getAssetURL('images/profile_pixel.png')}
-              variant='circular'
-              sx={{
-                width: 200,
-                mt: 2,
-                height: 'auto',
-                borderStyle: 'solid',
-                borderColor: 'whitesmoke',
-              }}/>
-          ),
+          Avatar: <AvatarMUI src={getAssetURL('images/profile_pixel.png')} variant='circular' {...avatarCommonProps} />,
           subtitle: '¯\\_(ツ)_/¯',
         })}
       </Fade>

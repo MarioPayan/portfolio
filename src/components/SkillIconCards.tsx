@@ -1,5 +1,5 @@
 import React, {createElement} from 'react'
-import {Divider, Grid, Paper, Typography, useTheme} from '@mui/material'
+import {Divider, Grid, Paper, Typography} from '@mui/material'
 import {Box} from '@mui/system'
 import {getKeyFromLabel} from '../utils/utils'
 import {getDevIconSrc, getIcon} from '../utils/icons'
@@ -66,7 +66,7 @@ const SkillIconCards = ({categories, backgroundColor}: SkillIconCards): JSX.Elem
             elevation={5}
             sx={{
               borderRadius: 4,
-              backgroundColor: backgroundColor,
+              background: `linear-gradient(70deg, ${backgroundColor} 10%,  rgba(0, 0, 0, 0) 95%)`,
               width: 'fit-content',
             }}>
             <CategoryIconBackground Icon={getIcon(category.title)} />

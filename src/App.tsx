@@ -17,7 +17,7 @@ const theme = createTheme({
   palette: {
     mode: mode,
     primary: {
-      main: '#00bcd4',
+      main: 'rgba(0,188,212, 1)',
     },
 
     background: mode === 'dark' ? {default: 'rgb(22, 28, 36)', paper: 'rgb(33, 43, 54)'} : {},
@@ -41,7 +41,7 @@ const App = (): JSX.Element => {
           <LandingCard {...{section, setSection, chill, setChill}} />
         </Grid>
         <Grid item xs={12}>
-          {section === sectionKeys[0] && <About />}
+          {section === sectionKeys[0] && <About chill={chill} />}
           {section === sectionKeys[1] && <Skills />}
           {section === sectionKeys[2] && <Experience />}
           {section === sectionKeys[3] && <Projects />}
