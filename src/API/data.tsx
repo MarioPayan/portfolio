@@ -1,12 +1,11 @@
 import React from 'react'
 
-export const SECTIONS = [
+export const BUSINESS_SECTIONS = [
   {label: 'About Me'},
   {label: 'Skills'},
   {label: 'Experience'},
   {label: 'Projects'},
   {label: 'Education'},
-  {label: 'Chill'},
 ]
 
 export const CHILL_SECTIONS = [
@@ -22,12 +21,12 @@ export const CHILL_SECTIONS = [
 ]
 
 export const SOCIAL_LIST = [
-  {label: 'Email', url: 'mailto:mpayan.av@gmail.com', chill: false},
-  {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', chill: false},
-  {label: 'Git Hub', url: 'https://github.com/MarioPayan', chill: false},
-  {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', chill: true},
-  {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', chill: true},
-  {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', chill: true},
+  {label: 'Email', url: 'mailto:mpayan.av@gmail.com', mode: 'business'},
+  {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', mode: 'business'},
+  {label: 'Git Hub', url: 'https://github.com/MarioPayan', mode: 'business'},
+  {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', mode: 'chill'},
+  {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', mode: 'chill'},
+  {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', mode: 'chill'},
 ]
 
 export const TECH_STACK = [

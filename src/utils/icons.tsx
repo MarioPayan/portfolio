@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   BugReport,
+  Business,
   Code,
   Coffee,
   Email,
@@ -32,6 +33,7 @@ const icons = {
   [getKeyFromLabel('Projects')]: Work,
   [getKeyFromLabel('Education')]: School,
   [getKeyFromLabel('Chill')]: Coffee,
+  [getKeyFromLabel('Business')]: Business,
   [getKeyFromLabel('Music')]: QuestionMark,
   [getKeyFromLabel('Traveling')]: QuestionMark,
   [getKeyFromLabel('Dogs')]: QuestionMark,

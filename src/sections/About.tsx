@@ -3,8 +3,9 @@ import {Grid, IconButton, Paper, Typography} from '@mui/material'
 import {SOCIAL_LIST} from '../API/data'
 import {getKeyFromLabel, openInNewTab} from '../utils/utils'
 import {getIcon} from '../utils/icons'
+import {Mode} from '../utils/types'
 
-const About = ({chill}: {chill: boolean}): JSX.Element => {
+const About = ({mode}: {mode: Mode}): JSX.Element => {
   const CardItem = ({children}: {children: any}) => (
     <Grid item xs>
       <Paper elevation={5}>
@@ -40,7 +41,7 @@ const About = ({chill}: {chill: boolean}): JSX.Element => {
           <Title label="I'm a" />
           <Typography>Software Developer</Typography>
           <Typography>Full Stack Engineer</Typography>
-          <Typography>Tech Lead Developer</Typography>
+          <Typography>Tech Lead</Typography>
         </Grid>
       </CardItem>
       <CardItem>
@@ -63,7 +64,7 @@ const About = ({chill}: {chill: boolean}): JSX.Element => {
         <Grid item xs={12}>
           <Title label='Social' />
           {SOCIAL_LIST.map(
-            social => social.chill === chill && (
+            social => social.mode === mode && (
               <Social {...social} Icon={getIcon(social.label)} key={getKeyFromLabel(social.label)} />
             )
           )}

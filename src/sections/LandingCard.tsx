@@ -14,15 +14,16 @@ import {
   Typography
 } from '@mui/material'
 import {Box} from '@mui/system'
-import {SECTIONS, SOCIAL_LIST} from '../API/data'
+import {BUSINESS_SECTIONS, CHILL_SECTIONS, SOCIAL_LIST} from '../API/data'
 import {getAssetURL, getKeyFromLabel, openInNewTab} from '../utils/utils'
 import {getIcon} from '../utils/icons'
+import {Mode} from '../utils/types'
 
 export type Content = {Avatar: JSX.Element; subtitle: string}
 export type SetSection = (section: string) => void
-export type LandingCard = {section: string; setSection: SetSection; chill: boolean}
+export type LandingCard = {section: string; setSection: SetSection; mode: Mode}
 
-const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => {
+const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
   const MainCardIconButton = ({label, url, Icon}: {label: string; url: string; Icon: any}): JSX.Element => (
     <IconButton aria-label={label} sx={{color: 'whitesmoke'}} onClick={() => openInNewTab(url)}>
       <Icon fontSize='large' />
@@ -72,7 +73,7 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
       <Grid item container justifyContent='flex-end' xs sx={{mt: 1, ml: 1, display: {xs: 'none', md: 'flex'}}}>
         <Stack direction='row' spacing={1} flexWrap='wrap' justifyContent='right' sx={{minWidth: 150}}>
           {SOCIAL_LIST.map(social => (
-            <Collapse in={chill === social.chill} orientation='horizontal' key={getKeyFromLabel(social.label)}>
+            <Collapse in={mode === social.mode} orientation='horizontal' key={getKeyFromLabel(social.label)}>
               <MainCardIconButton {...social} Icon={getIcon(social.label)} />
             </Collapse>
           ))}
@@ -81,16 +82,22 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
     </Grid>
   )
 
+  const switchTab = () => ({business: {label: 'Chill'}, chill: {label: 'Business'}}[mode])
+
+  const currentSections = () => ({business: BUSINESS_SECTIONS, chill: CHILL_SECTIONS}[mode])
+
+  const isLastTab = (i: number) => i === currentSections().length
+
   return (
     <Card sx={{position: 'relative', borderRadius: 4}}>
-      <Fade in={!chill}>
+      <Fade in={mode === 'business'}>
         {Content({
-          Avatar: <AvatarMUI src={getAssetURL('images/profile.jpg')} variant='circular' {...avatarCommonProps} />,
+          Avatar: <AvatarMUI src={getAssetURL('images/profile_LQ.jpg')} variant='circular' {...avatarCommonProps} />,
           subtitle: 'Full Stack Engineer ● Tech Lead Developer',
         })}
       </Fade>
 
-      <Fade in={chill}>
+      <Fade in={mode === 'chill'}>
         {Content({
           Avatar: <AvatarMUI src={getAssetURL('images/profile_pixel.png')} variant='circular' {...avatarCommonProps} />,
           subtitle: '¯\\_(ツ)_/¯',
@@ -124,7 +131,7 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
             scrollButtons='auto'
             value={section}
             onChange={(event, newValue) => setSection(newValue)}>
-            {SECTIONS.map(tab => (
+            {[...currentSections(), switchTab()].map((tab, i) => (
               <Tab
                 disableRipple
                 key={getKeyFromLabel(tab.label)}
@@ -132,11 +139,16 @@ const LandingCard = ({section, setSection, chill}: LandingCard): JSX.Element => 
                 label={
                   <Typography
                     textTransform='none'
-                    sx={{fontSize: 18, fontWeight: 700, display: {xs: 'none', md: 'flex'}}}>
+                    sx={{
+                      fontSize: 18,
+                      fontWeight: 700,
+                      display: {xs: 'none', md: 'flex'},
+                      color: isLastTab(i) ? 'white' : 'unset',
+                    }}>
                     {tab.label}
                   </Typography>
                 }
-                icon={createElement(getIcon(tab.label), {})}
+                icon={createElement(getIcon(tab.label), {sx: {color: isLastTab(i) ? 'white' : 'unset'}})}
                 iconPosition='start'
                 sx={{fontWeight: 800, px: 2}}/>
             ))}

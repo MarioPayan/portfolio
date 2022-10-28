@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react'
 import {createTheme, CssBaseline, Grid, ThemeProvider} from '@mui/material'
 import LandingCard from './sections/LandingCard'
 import Skills from './sections/Skills'
-import {SECTIONS} from './API/data'
+import {BUSINESS_SECTIONS} from './API/data'
 import {getKeyFromLabel} from './utils/utils'
 import Experience from './sections/Experience'
 import Projects from './sections/Projects'
 import Education from './sections/Education'
 import About from './sections/About'
 import UnderConstruction from './components/UnderConstruction'
+import {Mode} from './utils/types'
 
 const mode: 'light' | 'dark' = 'dark'
 
@@ -25,12 +26,19 @@ const theme = createTheme({
 })
 
 const App = (): JSX.Element => {
-  const sectionKeys = SECTIONS.map(section => getKeyFromLabel(section.label))
+  const sectionKeys = BUSINESS_SECTIONS.map(section => getKeyFromLabel(section.label))
   const [section, setSection] = useState<string>(sectionKeys[0])
-  const [chill, setChill] = useState<boolean>(false)
+  const [mode, setMode] = useState<Mode>('business')
 
   useEffect(() => {
-    setChill(section === 'chill')
+    if (section === 'chill') {
+      setMode('chill')
+      setSection(sectionKeys[0])
+    }
+    if (section === 'business') {
+      setMode('business')
+      setSection(sectionKeys[0])
+    }
   }, [section])
 
   return (
@@ -38,10 +46,10 @@ const App = (): JSX.Element => {
       <CssBaseline />
       <Grid item container spacing={2} padding={2}>
         <Grid item xs={12}>
-          <LandingCard {...{section, setSection, chill, setChill}} />
+          <LandingCard {...{section, setSection, mode}} />
         </Grid>
         <Grid item xs={12}>
-          {section === sectionKeys[0] && <About chill={chill} />}
+          {section === sectionKeys[0] && <About mode={mode} />}
           {section === sectionKeys[1] && <Skills />}
           {section === sectionKeys[2] && <Experience />}
           {section === sectionKeys[3] && <Projects />}

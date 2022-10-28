@@ -41,13 +41,16 @@ const Projects = (): JSX.Element => {
                 width: '-webkit-fill-available',
                 height: '-webkit-fill-available',
                 borderRadius: '25px',
+                backgroundColor: 'whitesmoke',
               }}/>
             <Box
               sx={{
                 position: 'absolute',
                 height: 1,
                 width: 1,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)',
+                background: `linear-gradient(180deg, rgba(0,0,0,0) ${
+                  showDescription[getKeyFromLabel(project.label)] ? '30%' : ' 60%'
+                }, rgba(0,0,0,1) 100%)`,
                 borderRadius: '20px',
               }}/>
             <Grid item container sx={{position: 'absolute', height: 1, p: 1}} alignContent='flex-end'>
