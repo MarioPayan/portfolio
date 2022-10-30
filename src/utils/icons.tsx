@@ -13,14 +13,22 @@ import {
   IntegrationInstructions,
   LaptopChromebook,
   LinkedIn,
+  Movie,
   Moving,
+  MusicNote,
   Person,
+  Pets,
   QuestionMark,
   School,
   SelfImprovement,
+  SportsEsports,
+  SportsSoccer,
   Storage,
+  TheaterComedy,
+  TwoWheeler,
   WhatsApp,
-  Work
+  Work,
+  YouTube
 } from '@mui/icons-material'
 
 import {getDevIconURL, getKeyFromLabel} from './utils'
@@ -34,13 +42,13 @@ const icons = {
   [getKeyFromLabel('Education')]: School,
   [getKeyFromLabel('Chill')]: Coffee,
   [getKeyFromLabel('Business')]: Business,
-  [getKeyFromLabel('Music')]: QuestionMark,
-  [getKeyFromLabel('Traveling')]: QuestionMark,
-  [getKeyFromLabel('Dogs')]: QuestionMark,
-  [getKeyFromLabel('Geek')]: QuestionMark,
-  [getKeyFromLabel('Roles')]: QuestionMark,
-  [getKeyFromLabel('TV')]: QuestionMark,
-  [getKeyFromLabel('Sports')]: QuestionMark,
+  [getKeyFromLabel('Music')]: MusicNote,
+  [getKeyFromLabel('Traveling')]: TwoWheeler,
+  [getKeyFromLabel('Dogs')]: Pets,
+  [getKeyFromLabel('Geek')]: SportsEsports,
+  [getKeyFromLabel('Roles')]: TheaterComedy,
+  [getKeyFromLabel('Films')]: Movie,
+  [getKeyFromLabel('Sports')]: SportsSoccer,
   [getKeyFromLabel('Random')]: QuestionMark,
 
   // Social
@@ -50,6 +58,7 @@ const icons = {
   [getKeyFromLabel('WhatsApp')]: WhatsApp,
   [getKeyFromLabel('Facebook')]: Facebook,
   [getKeyFromLabel('Instagram')]: Instagram,
+  [getKeyFromLabel('YouTube')]: YouTube,
 
   // Categories
   [getKeyFromLabel('Coding')]: Code,

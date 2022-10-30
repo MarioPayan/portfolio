@@ -7,29 +7,23 @@ import {
   Collapse,
   Fade,
   Grid,
-  IconButton,
   Stack,
   Tab,
   Tabs,
   Typography
 } from '@mui/material'
 import {Box} from '@mui/system'
-import {BUSINESS_SECTIONS, CHILL_SECTIONS, SOCIAL_LIST} from '../API/data'
-import {getAssetURL, getKeyFromLabel, openInNewTab} from '../utils/utils'
+import DATA, {KEYS} from '../API/data'
+import {getAssetURL, getKeyFromLabel} from '../utils/utils'
 import {getIcon} from '../utils/icons'
 import {Mode} from '../utils/types'
+import SocialIconButton from '../components/SocialIconButton'
 
 export type Content = {Avatar: JSX.Element; subtitle: string}
 export type SetSection = (section: string) => void
 export type LandingCard = {section: string; setSection: SetSection; mode: Mode}
 
 const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
-  const MainCardIconButton = ({label, url, Icon}: {label: string; url: string; Icon: any}): JSX.Element => (
-    <IconButton aria-label={label} sx={{color: 'whitesmoke'}} onClick={() => openInNewTab(url)}>
-      <Icon fontSize='large' />
-    </IconButton>
-  )
-
   const avatarCommonProps = {
     alt: 'Mario Payan',
     sx: {
@@ -72,9 +66,9 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
 
       <Grid item container justifyContent='flex-end' xs sx={{mt: 1, ml: 1, display: {xs: 'none', md: 'flex'}}}>
         <Stack direction='row' spacing={1} flexWrap='wrap' justifyContent='right' sx={{minWidth: 150}}>
-          {SOCIAL_LIST.map(social => (
+          {DATA.SOCIAL_LIST.map(social => (
             <Collapse in={mode === social.mode} orientation='horizontal' key={getKeyFromLabel(social.label)}>
-              <MainCardIconButton {...social} Icon={getIcon(social.label)} />
+              <SocialIconButton {...social} Icon={getIcon(social.label)} />
             </Collapse>
           ))}
         </Stack>
@@ -82,22 +76,33 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
     </Grid>
   )
 
-  const switchTab = () => ({business: {label: 'Chill'}, chill: {label: 'Business'}}[mode])
+  const switchTab = () => {
+    const businessTab = {label: 'Business', key: KEYS.BUSINESS}
+    const chillTab = {label: 'Chill', key: KEYS.CHILL}
+    const switcher = {[KEYS.BUSINESS]: chillTab, [KEYS.CHILL]: businessTab}
+    return switcher[mode]
+  }
 
-  const currentSections = () => ({business: BUSINESS_SECTIONS, chill: CHILL_SECTIONS}[mode])
+  const currentSections = () => ({[KEYS.BUSINESS]: DATA.BUSINESS_SECTIONS, [KEYS.CHILL]: DATA.CHILL_SECTIONS}[mode])
 
   const isLastTab = (i: number) => i === currentSections().length
 
+  const getHash = (key: string) => {
+    if (key === KEYS.BUSINESS) return `#${KEYS.ABOUT_ME_BUSINESS}`
+    if (key === KEYS.CHILL) return `#${KEYS.ABOUT_ME_CHILL}`
+    return `#${key}`
+  } //TODO: Improve
+
   return (
     <Card sx={{position: 'relative', borderRadius: 4}}>
-      <Fade in={mode === 'business'}>
+      <Fade in={mode === KEYS.BUSINESS}>
         {Content({
           Avatar: <AvatarMUI src={getAssetURL('images/profile_LQ.jpg')} variant='circular' {...avatarCommonProps} />,
           subtitle: 'Full Stack Engineer ● Tech Lead Developer',
         })}
       </Fade>
 
-      <Fade in={mode === 'chill'}>
+      <Fade in={mode === KEYS.CHILL}>
         {Content({
           Avatar: <AvatarMUI src={getAssetURL('images/profile_pixel.png')} variant='circular' {...avatarCommonProps} />,
           subtitle: '¯\\_(ツ)_/¯',
@@ -134,8 +139,10 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
             {[...currentSections(), switchTab()].map((tab, i) => (
               <Tab
                 disableRipple
-                key={getKeyFromLabel(tab.label)}
-                value={getKeyFromLabel(tab.label)}
+                key={tab.key}
+                value={tab.key}
+                component='a'
+                href={getHash(tab.key)}
                 label={
                   <Typography
                     textTransform='none'

@@ -48,6 +48,7 @@ module.exports = {
       },
     ],
     'object-curly-newline': ['warn', {'multiline': true, 'consistent': true}],
+    'arrow-body-style' : ['warn', 'as-needed'],
     'no-confusing-arrow': ['warn', {'allowParens': true}],
     'implicit-arrow-linebreak': ['warn', 'beside'],
     'operator-linebreak': ['warn', 'none'],

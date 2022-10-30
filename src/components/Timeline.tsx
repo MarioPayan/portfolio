@@ -17,9 +17,7 @@ export type Colors = {[key: string]: string}
 export type Timeline = {items: TimeLineItem[]; colors: Colors; BulletIcon: React.ComponentType}
 
 const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
-  const sortFrom = (a: TimeLineItem, b: TimeLineItem): number => {
-    return new Date(b.from).getTime() - new Date(a.from).getTime()
-  }
+  const sortFrom = (a: TimeLineItem, b: TimeLineItem): number => new Date(b.from).getTime() - new Date(a.from).getTime()
 
   const leftAlignTimeline = {
     pl: 5,

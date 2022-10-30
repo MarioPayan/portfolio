@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {ExpandLess, ExpandMore, Lock} from '@mui/icons-material'
 import {Grid, Typography, Paper, Button, Collapse} from '@mui/material'
 import {Box} from '@mui/system'
-import {PROJECTS} from '../API/data'
+import DATA from '../API/data'
 import {getAssetURL, getKeyFromLabel, image404, openInNewTab} from '../utils/utils'
 
 export type Project = {label: string; description: string; image: string; stack: string[]; link?: string}
@@ -20,7 +20,7 @@ const Projects = (): JSX.Element => {
 
   return (
     <Grid item container xs={12} spacing={4}>
-      {PROJECTS.map((project: Project, i: number) => (
+      {DATA.PROJECTS.map((project: Project, i: number) => (
         <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={i}>
           <Paper
             elevation={5}

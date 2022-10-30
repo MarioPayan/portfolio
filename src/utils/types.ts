@@ -1,1 +1,1 @@
-export type Mode = 'business' | 'chill'
+export type Mode = 'BUSINESS' | 'CHILL'

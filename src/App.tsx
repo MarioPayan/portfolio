@@ -1,15 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import {createTheme, CssBaseline, Grid, ThemeProvider} from '@mui/material'
+import UnderConstruction from './components/UnderConstruction'
+import {Mode} from './utils/types'
+import DATA, {KEYS} from './API/data'
+// Sections
 import LandingCard from './sections/LandingCard'
 import Skills from './sections/Skills'
-import {BUSINESS_SECTIONS} from './API/data'
-import {getKeyFromLabel} from './utils/utils'
 import Experience from './sections/Experience'
 import Projects from './sections/Projects'
 import Education from './sections/Education'
-import About from './sections/About'
-import UnderConstruction from './components/UnderConstruction'
-import {Mode} from './utils/types'
+import Music from './sections/Music'
+import Traveling from './sections/Traveling'
+import Dogs from './sections/Dogs'
+import Geek from './sections/Geek'
+import Roles from './sections/Roles'
+import Films from './sections/Films'
+import Random from './sections/Random'
+import BusinessAboutMe from './sections/About'
+import Sports from './sections/Sports'
 
 const mode: 'light' | 'dark' = 'dark'
 
@@ -26,18 +34,17 @@ const theme = createTheme({
 })
 
 const App = (): JSX.Element => {
-  const sectionKeys = BUSINESS_SECTIONS.map(section => getKeyFromLabel(section.label))
-  const [section, setSection] = useState<string>(sectionKeys[0])
-  const [mode, setMode] = useState<Mode>('business')
+  const [section, setSection] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
+  const [mode, setMode] = useState<Mode>(KEYS.BUSINESS)
 
   useEffect(() => {
-    if (section === 'chill') {
-      setMode('chill')
-      setSection(sectionKeys[0])
+    if (section === KEYS.CHILL) {
+      setMode(KEYS.CHILL)
+      setSection(DATA.CHILL_SECTIONS[0].key)
     }
-    if (section === 'business') {
-      setMode('business')
-      setSection(sectionKeys[0])
+    if (section === KEYS.BUSINESS) {
+      setMode(KEYS.BUSINESS)
+      setSection(DATA.BUSINESS_SECTIONS[0].key)
     }
   }, [section])
 
@@ -49,11 +56,21 @@ const App = (): JSX.Element => {
           <LandingCard {...{section, setSection, mode}} />
         </Grid>
         <Grid item xs={12}>
-          {section === sectionKeys[0] && <About mode={mode} />}
-          {section === sectionKeys[1] && <Skills />}
-          {section === sectionKeys[2] && <Experience />}
-          {section === sectionKeys[3] && <Projects />}
-          {section === sectionKeys[4] && <Education />}
+          {/* TODO: Improve */}
+          {section === KEYS.ABOUT_ME_BUSINESS && <BusinessAboutMe />}
+          {section === KEYS.SKILLS && <Skills />}
+          {section === KEYS.EXPERIENCE && <Experience />}
+          {section === KEYS.PROJECTS && <Projects />}
+          {section === KEYS.EDUCATION && <Education />}
+          {section === KEYS.MUSIC && <Music />}
+          {section === KEYS.ABOUT_ME_CHILL && <BusinessAboutMe />}
+          {section === KEYS.TRAVELING && <Traveling />}
+          {section === KEYS.DOGS && <Dogs />}
+          {section === KEYS.GEEK && <Geek />}
+          {section === KEYS.ROLES && <Roles />}
+          {section === KEYS.FILMS && <Films />}
+          {section === KEYS.SPORTS && <Sports />}
+          {section === KEYS.RANDOM && <Random />}
         </Grid>
       </Grid>
       <UnderConstruction />

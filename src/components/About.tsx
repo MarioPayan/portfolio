@@ -3,8 +3,9 @@ import {Grid, IconButton, Paper, Typography} from '@mui/material'
 import DATA from '../API/data'
 import {getKeyFromLabel, openInNewTab} from '../utils/utils'
 import {getIcon} from '../utils/icons'
+import {Mode} from '../utils/types'
 
-const BusinessAboutMe = (): JSX.Element => {
+const About = ({mode}: {mode: Mode}): JSX.Element => {
   const CardItem = ({children}: {children: any}) => (
     <Grid item xs>
       <Paper elevation={5}>
@@ -63,7 +64,7 @@ const BusinessAboutMe = (): JSX.Element => {
         <Grid item xs={12}>
           <Title label='Social' />
           {DATA.SOCIAL_LIST.map(
-            social => social.mode === 'business' && (
+            social => social.mode === mode && (
               <Social {...social} Icon={getIcon(social.label)} key={getKeyFromLabel(social.label)} />
             )
           )}
@@ -73,4 +74,4 @@ const BusinessAboutMe = (): JSX.Element => {
   )
 }
 
-export default BusinessAboutMe
+export default About
