@@ -1,4 +1,6 @@
-export const getAssetURL = (url: string): string => `${process.env.PUBLIC_URL}/${url}`
+export const image404 = 'images/404.jpg'
+
+export const getAssetURL = (url: string): string => (url ? `${process.env.PUBLIC_URL}/${url}` : image404)
 
 export const getDevIconURL = (url: string): string => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
 
@@ -15,4 +17,6 @@ export const openInNewTab = (url: string): void => {
   if (newWindow) newWindow.opener = null
 }
 
-export const image404 = '/images/404.jpg'
+export const tanHead = (key: string) => {
+  window.history.replaceState(null, '', `/${getKeyFromLabel(key)}`)
+}

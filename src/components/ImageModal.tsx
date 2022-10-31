@@ -1,5 +1,6 @@
 import React from 'react'
 import {Dialog} from '@mui/material'
+import {getAssetURL} from '../utils/utils'
 
 export type ImageModal = {image: string; onClose: any}
 
@@ -8,7 +9,7 @@ const ImageModal = ({image, onClose}: ImageModal): JSX.Element => (
     open={!!image}
     onClose={() => onClose()}
     maxWidth='lg'>
-    <img src={image} alt='TODO' />
+    <img src={getAssetURL(image)} alt='TODO' />
   </Dialog>
 )
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import {Grid, IconButton, Paper, Typography} from '@mui/material'
-import DATA from '../API/data'
-import {getKeyFromLabel, openInNewTab} from '../utils/utils'
+import DATA, {KEYS} from '../API/data'
+import {getKeyFromLabel, openInNewTab, tanHead} from '../utils/utils'
 import {getIcon} from '../utils/icons'
 
 const BusinessAboutMe = (): JSX.Element => {
+  tanHead(KEYS.ABOUT_ME_BUSINESS)
+
   const CardItem = ({children}: {children: any}) => (
     <Grid item xs>
       <Paper elevation={5}>

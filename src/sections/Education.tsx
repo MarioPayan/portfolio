@@ -1,10 +1,12 @@
 import React from 'react'
-import DATA from '../API/data'
-import {getKeyFromLabel} from '../utils/utils'
+import DATA, {KEYS} from '../API/data'
+import {getKeyFromLabel, tanHead} from '../utils/utils'
 import Timeline from '../components/Timeline'
 import {School} from '@mui/icons-material'
 
 const Education = (): JSX.Element => {
+  tanHead(KEYS.EDUCATION)
+
   const colors = {
     [getKeyFromLabel('Universidad del Valle')]: 'rgba(210, 0, 0, 0.5)',
   }

@@ -2,13 +2,15 @@ import React, {useState} from 'react'
 import {ExpandLess, ExpandMore, Lock} from '@mui/icons-material'
 import {Grid, Typography, Paper, Button, Collapse} from '@mui/material'
 import {Box} from '@mui/system'
-import DATA from '../API/data'
-import {getAssetURL, getKeyFromLabel, image404, openInNewTab} from '../utils/utils'
+import DATA, {KEYS} from '../API/data'
+import {getAssetURL, getKeyFromLabel, openInNewTab, tanHead} from '../utils/utils'
 
 export type Project = {label: string; description: string; image: string; stack: string[]; link?: string}
 
 const Projects = (): JSX.Element => {
   const [showDescription, setShowDescription] = useState<{[key: string]: boolean}>({})
+
+  tanHead(KEYS.PROJECTS)
 
   const handleShowDescription = (key: string) => {
     if (key in showDescription) {
@@ -35,7 +37,7 @@ const Projects = (): JSX.Element => {
             }}>
             <img
               alt={project.label}
-              src={getAssetURL(project.image || image404)}
+              src={getAssetURL(project.image)}
               style={{
                 position: 'absolute',
                 width: '-webkit-fill-available',

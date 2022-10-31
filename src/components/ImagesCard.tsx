@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
-import {CardActionArea, CardMedia, Grid, Paper, Typography} from '@mui/material'
+import React from 'react'
+import {Box, Grid, Paper, Typography} from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
 import SocialIconButton from './SocialIconButton'
 import {getIcon} from '../utils/icons'
+import {getAssetURL} from '../utils/utils'
 
 export type ImagesCard = {title: string; description: string; images: string[]; onImage: any; social?: any}
 
@@ -20,9 +21,10 @@ const ImagesCard = ({title, description, images, onImage, social = {}}: ImagesCa
   }
 
   const cardImageProperties: React.CSSProperties = {
-    width: 1,
-    height: 1,
-    borderRadius: 1,
+    width: '-webkit-fill-available',
+    height: '-webkit-fill-available',
+    cursor: 'pointer',
+    borderRadius: 5,
     border: 'solid',
     color: 'whitesmoke',
   }
@@ -56,9 +58,14 @@ const ImagesCard = ({title, description, images, onImage, social = {}}: ImagesCa
             <Carousel {...carouselSettings}>
               {images.map(image => (
                 <Grid item xs={12} key={image}>
-                  <CardActionArea onClick={() => onImage(image)} sx={{width: 1, height: 400}}>
-                    <CardMedia image={image} title={title} sx={cardImageProperties}></CardMedia>
-                  </CardActionArea>
+                  <Box sx={{height: 300, width: 1}}>
+                    <img
+                      onClick={() => onImage(image)}
+                      src={getAssetURL(image)}
+                      title={title}
+                      loading='lazy'
+                      style={cardImageProperties}/>
+                  </Box>
                 </Grid>
               ))}
             </Carousel>

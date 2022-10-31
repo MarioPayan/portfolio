@@ -1,11 +1,14 @@
 import {useTheme} from '@mui/material'
 import React from 'react'
 
-import DATA from '../API/data'
+import DATA, {KEYS} from '../API/data'
 import SkillIconCards from '../components/SkillIconCards'
+import {tanHead} from '../utils/utils'
 
 const Skills = (): JSX.Element => {
   const theme = useTheme()
+
+  tanHead(KEYS.SKILLS)
 
   return (
     <>

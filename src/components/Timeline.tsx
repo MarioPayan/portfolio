@@ -20,7 +20,7 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
   const sortFrom = (a: TimeLineItem, b: TimeLineItem): number => new Date(b.from).getTime() - new Date(a.from).getTime()
 
   const leftAlignTimeline = {
-    pl: 5,
+    pl: {sm: 0, md: 5},
     [`& .${timelineItemClasses.root}:before`]: {
       flex: 0,
       padding: 0,

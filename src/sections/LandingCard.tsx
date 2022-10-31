@@ -87,12 +87,6 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
 
   const isLastTab = (i: number) => i === currentSections().length
 
-  const getHash = (key: string) => {
-    if (key === KEYS.BUSINESS) return `#${KEYS.ABOUT_ME_BUSINESS}`
-    if (key === KEYS.CHILL) return `#${KEYS.ABOUT_ME_CHILL}`
-    return `#${key}`
-  } //TODO: Improve
-
   return (
     <Card sx={{position: 'relative', borderRadius: 4}}>
       <Fade in={mode === KEYS.BUSINESS}>
@@ -142,7 +136,6 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
                 key={tab.key}
                 value={tab.key}
                 component='a'
-                href={getHash(tab.key)}
                 label={
                   <Typography
                     textTransform='none'
