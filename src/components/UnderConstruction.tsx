@@ -3,7 +3,6 @@ import {Dialog, DialogTitle, DialogContentText, DialogActions, Button, DialogCon
 
 const UnderConstruction = (): JSX.Element => {
   const [openModal, setOpenModal] = useState(true)
-  //TODO: Cookies
   return (
     <>
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>

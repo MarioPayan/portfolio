@@ -34,8 +34,11 @@ const theme = createTheme({
 })
 
 const App = (): JSX.Element => {
-  const [section, setSection] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
-  const [mode, setMode] = useState<Mode>(KEYS.BUSINESS)
+  const path = window.location.pathname.split('/')
+  const urlSection = path.length === 2 ? path[1].toUpperCase() : ''
+  const urlMode = urlSection ? DATA.CHILL_SECTIONS.map(cs => cs.key).includes(urlSection) ? KEYS.CHILL : KEYS.BUSINESS : ''
+  const [section, setSection] = useState<string>(urlSection || DATA.BUSINESS_SECTIONS[0].key)
+  const [mode, setMode] = useState<Mode>(urlMode || KEYS.BUSINESS)
 
   useEffect(() => {
     if (section === KEYS.CHILL) {
@@ -56,7 +59,6 @@ const App = (): JSX.Element => {
           <LandingCard {...{section, setSection, mode}} />
         </Grid>
         <Grid item xs={12}>
-          {/* TODO: Improve */}
           {section === KEYS.ABOUT_ME_BUSINESS && <BusinessAboutMe />}
           {section === KEYS.SKILLS && <Skills />}
           {section === KEYS.EXPERIENCE && <Experience />}
