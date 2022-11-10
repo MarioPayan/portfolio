@@ -65,7 +65,7 @@ const BusinessAboutMe = (): JSX.Element => {
         <Grid item xs={12}>
           <Title label='Social' />
           {DATA.SOCIAL_LIST.map(
-            social => social.mode === 'business' && (
+            social => social.mode === KEYS.BUSINESS && (
               <Social {...social} Icon={getIcon(social.label)} key={getKeyFromLabel(social.label)} />
             )
           )}

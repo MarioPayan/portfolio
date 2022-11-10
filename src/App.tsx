@@ -3,6 +3,7 @@ import {createTheme, CssBaseline, Grid, ThemeProvider} from '@mui/material'
 import UnderConstruction from './components/UnderConstruction'
 import {Mode} from './utils/types'
 import DATA, {KEYS} from './API/data'
+import Helmet from './components/Helmet'
 // Sections
 import LandingCard from './sections/LandingCard'
 import Skills from './sections/Skills'
@@ -53,6 +54,7 @@ const App = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet />
       <CssBaseline />
       <Grid item container spacing={2} padding={2}>
         <Grid item xs={12}>

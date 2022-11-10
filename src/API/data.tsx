@@ -1,5 +1,35 @@
-import React from 'react'
 import {Mode} from '../utils/types'
+
+type TechSoft = {title: string; skills: {title: string}[]}[]
+type ExperienceEducation = {where: string; from: string; to: string; position: string; achievements: string[]}[]
+type Hobbies = {
+  title: string
+  description: string
+  sections: {
+    title: string
+    description: string
+    images: string[]
+    social?: {facebook?: string; instagram?: string; youtube?: string; whatsapp?: string}
+  }[]
+}
+type Data = {
+  BUSINESS_SECTIONS: {label: string; key: string}[]
+  CHILL_SECTIONS: {label: string; key: string}[]
+  SOCIAL_LIST: {label: string; url: string; mode: Mode}[]
+  TECH_STACK: TechSoft
+  SOFT_STACK: TechSoft
+  EXPERIENCE: ExperienceEducation
+  EDUCATION: ExperienceEducation
+  PROJECTS: {label: string; description: string; image: string; stack: string[]; link?: string}[]
+  MUSIC: Hobbies
+  TRAVELING: Hobbies
+  DOGS: Hobbies
+  GEEK: Hobbies
+  SPORTS: Hobbies
+  ROLES: Hobbies
+  FILMS: Hobbies
+  RANDOM: Hobbies
+}
 
 export const KEYS = {
   //Sections
@@ -21,7 +51,7 @@ export const KEYS = {
   CHILL: 'CHILL' as Mode,
 }
 
-const DATA = {
+const DATA: Data = {
   BUSINESS_SECTIONS: [
     {label: 'About Me', key: KEYS.ABOUT_ME_BUSINESS},
     {label: 'Skills', key: KEYS.SKILLS},
@@ -43,12 +73,12 @@ const DATA = {
   ],
 
   SOCIAL_LIST: [
-    {label: 'Email', url: 'mailto:mpayan.av@gmail.com', mode: 'business'},
-    {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', mode: 'business'},
-    {label: 'Git Hub', url: 'https://github.com/MarioPayan', mode: 'business'},
-    {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', mode: 'chill'},
-    {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', mode: 'chill'},
-    {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', mode: 'chill'},
+    {label: 'Email', url: 'mailto:mpayan.av@gmail.com', mode: KEYS.BUSINESS},
+    {label: 'Linked In', url: 'https://www.linkedin.com/in/mario-payan/', mode: KEYS.BUSINESS},
+    {label: 'Git Hub', url: 'https://github.com/MarioPayan', mode: KEYS.BUSINESS},
+    {label: 'WhatsApp', url: 'https://wa.me/573186151646?text=Hey!', mode: KEYS.CHILL},
+    {label: 'Facebook', url: 'https://www.facebook.com/Mario.A.Payan.V', mode: KEYS.CHILL},
+    {label: 'Instagram', url: 'https://www.instagram.com/mario.a.payan/', mode: KEYS.CHILL},
   ],
 
   TECH_STACK: [
@@ -323,8 +353,7 @@ const DATA = {
           facebook: 'https://www.facebook.com/proyectofalsete',
           instagram: 'https://www.instagram.com/falsete.proyecto/',
           youtube: 'https://www.youtube.com/channel/UCTespFNTty8D1wSWhQiUmHA',
-          'en-whatsapp': 'https://wa.me/573127266099?text=Hey!',
-          'es-whatsapp': 'https://wa.me/573127266099?text=¡Hola!',
+          whatsapp: 'https://wa.me/573127266099?text=Hey!',
         },
       },
       {
