@@ -3,12 +3,11 @@ import React from 'react'
 
 import DATA, {KEYS} from '../API/data'
 import SkillIconCards from '../components/SkillIconCards'
-import {tanHead} from '../utils/utils'
+import {sectionTitle} from '../utils/utils'
 
 const Skills = (): JSX.Element => {
   const theme = useTheme()
-
-  tanHead(KEYS.SKILLS)
+  sectionTitle(KEYS.SKILLS)
 
   return (
     <>

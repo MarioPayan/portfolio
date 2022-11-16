@@ -1,11 +1,11 @@
 import React from 'react'
 import DATA, {KEYS} from '../API/data'
-import {getKeyFromLabel, tanHead} from '../utils/utils'
+import {getKeyFromLabel, sectionTitle} from '../utils/utils'
 import Timeline from '../components/Timeline'
 import {Work} from '@mui/icons-material'
 
 const Experience = (): JSX.Element => {
-  tanHead(KEYS.EXPERIENCE)
+  sectionTitle(KEYS.EXPERIENCE)
 
   const colors = {
     [getKeyFromLabel('Redux')]: 'rgba(9, 66, 156, 0.5)',

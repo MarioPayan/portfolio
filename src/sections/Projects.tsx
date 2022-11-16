@@ -3,14 +3,13 @@ import {ExpandLess, ExpandMore, Lock} from '@mui/icons-material'
 import {Grid, Typography, Paper, Button, Collapse} from '@mui/material'
 import {Box} from '@mui/system'
 import DATA, {KEYS} from '../API/data'
-import {getAssetURL, getKeyFromLabel, openInNewTab, tanHead} from '../utils/utils'
+import {getAssetURL, getKeyFromLabel, openInNewTab, sectionTitle} from '../utils/utils'
 
 export type Project = {label: string; description: string; image: string; stack: string[]; link?: string}
 
 const Projects = (): JSX.Element => {
   const [showDescription, setShowDescription] = useState<{[key: string]: boolean}>({})
-
-  tanHead(KEYS.PROJECTS)
+  sectionTitle(KEYS.PROJECTS)
 
   const handleShowDescription = (key: string) => {
     if (key in showDescription) {

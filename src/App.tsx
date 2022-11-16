@@ -3,13 +3,15 @@ import {createTheme, CssBaseline, Grid, ThemeProvider} from '@mui/material'
 import UnderConstruction from './components/UnderConstruction'
 import {Mode} from './utils/types'
 import DATA, {KEYS} from './API/data'
-import Helmet from './components/Helmet'
-// Sections
+import Head from './components/Head'
 import LandingCard from './sections/LandingCard'
+// Sections
+import AboutBusiness from './sections/AboutBusiness'
 import Skills from './sections/Skills'
 import Experience from './sections/Experience'
 import Projects from './sections/Projects'
 import Education from './sections/Education'
+import AboutChill from './sections/AboutChill'
 import Music from './sections/Music'
 import Traveling from './sections/Traveling'
 import Dogs from './sections/Dogs'
@@ -17,7 +19,6 @@ import Geek from './sections/Geek'
 import Roles from './sections/Roles'
 import Films from './sections/Films'
 import Random from './sections/Random'
-import BusinessAboutMe from './sections/About'
 import Sports from './sections/Sports'
 
 const mode: 'light' | 'dark' = 'dark'
@@ -29,7 +30,6 @@ const theme = createTheme({
     primary: {
       main: 'rgba(0,188,212, 1)',
     },
-
     background: mode === 'dark' ? {default: 'rgb(22, 28, 36)', paper: 'rgb(33, 43, 54)'} : {},
   },
 })
@@ -54,20 +54,20 @@ const App = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Helmet />
+      <Head />
       <CssBaseline />
       <Grid item container spacing={2} padding={2}>
         <Grid item xs={12}>
           <LandingCard {...{section, setSection, mode}} />
         </Grid>
         <Grid item xs={12}>
-          {section === KEYS.ABOUT_ME_BUSINESS && <BusinessAboutMe />}
+          {section === KEYS.ABOUT_ME_BUSINESS && <AboutBusiness setSection={setSection} />}
           {section === KEYS.SKILLS && <Skills />}
           {section === KEYS.EXPERIENCE && <Experience />}
           {section === KEYS.PROJECTS && <Projects />}
           {section === KEYS.EDUCATION && <Education />}
           {section === KEYS.MUSIC && <Music />}
-          {section === KEYS.ABOUT_ME_CHILL && <BusinessAboutMe />}
+          {section === KEYS.ABOUT_ME_CHILL && <AboutChill />}
           {section === KEYS.TRAVELING && <Traveling />}
           {section === KEYS.DOGS && <Dogs />}
           {section === KEYS.GEEK && <Geek />}

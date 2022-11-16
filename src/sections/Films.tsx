@@ -3,14 +3,13 @@ import {Grid} from '@mui/material'
 import DATA, {KEYS} from '../API/data'
 import ImagesCard from '../components/ImagesCard'
 import ImageModal from '../components/ImageModal'
-import {tanHead} from '../utils/utils'
+import {sectionTitle} from '../utils/utils'
 
 export type CardItem = {title: string; description: string; images: string[]}
 
 const Films = (): JSX.Element => {
   const [imageModal, setImageModal] = useState<string>('')
-
-  tanHead(KEYS.FILMS)
+  sectionTitle(KEYS.FILMS)
 
   return (
     <Grid item container xs={12} spacing={3}>

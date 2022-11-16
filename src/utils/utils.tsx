@@ -17,6 +17,6 @@ export const openInNewTab = (url: string): void => {
   if (newWindow) newWindow.opener = null
 }
 
-export const tanHead = (key: string) => {
+export const sectionTitle = (key: string) => {
   window.history.replaceState(null, '', `/${getKeyFromLabel(key)}`)
 }

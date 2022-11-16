@@ -92,7 +92,7 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
       <Fade in={mode === KEYS.BUSINESS}>
         {Content({
           Avatar: <AvatarMUI src={getAssetURL('images/profile_LQ.jpg')} variant='circular' {...avatarCommonProps} />,
-          subtitle: 'Full Stack Engineer ● Tech Lead Developer',
+          subtitle: 'Full Stack Tech Lead Software Developer',
         })}
       </Fade>
 

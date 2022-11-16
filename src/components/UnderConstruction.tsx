@@ -6,10 +6,10 @@ const UnderConstruction = (): JSX.Element => {
   return (
     <>
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>
-        <DialogTitle>Under construction</DialogTitle>
+        <DialogTitle>Under development</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Hey, thanks for visiting my website, this site is under construction yet but feel free to visit it and check
+            Hey, thanks for visiting my website, this site is under development yet but feel free to visit it and check
             it whenever you want
           </DialogContentText>
         </DialogContent>

@@ -1,5 +1,10 @@
 import {Mode} from '../utils/types'
 
+type Personal = {
+  name: string
+  url: string
+  description: {[mode in any]: string}
+}
 type TechSoft = {title: string; skills: {title: string}[]}[]
 type ExperienceEducation = {where: string; from: string; to: string; position: string; achievements: string[]}[]
 type Hobbies = {
@@ -13,6 +18,7 @@ type Hobbies = {
   }[]
 }
 type Data = {
+  PERSONAL: Personal
   BUSINESS_SECTIONS: {label: string; key: string}[]
   CHILL_SECTIONS: {label: string; key: string}[]
   SOCIAL_LIST: {label: string; url: string; mode: Mode}[]
@@ -52,6 +58,17 @@ export const KEYS = {
 }
 
 const DATA: Data = {
+  PERSONAL: {
+    name: 'Mario Payan',
+    url: 'https://www.mariopayan.com/',
+    description: {
+      [KEYS.BUSINESS]:
+        'A Full Stack Tech Lead Software Developer with focus on software development, algorithms design, software as a service and clean code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing',
+      [KEYS.CHILL]:
+        'A Colombian software developer, part-time empirical musician, hardcore gamer, unstoppable traveler, and according to my mom, I\'m really handsome too. ¯\\_(ツ)_/¯',
+    },
+  },
+
   BUSINESS_SECTIONS: [
     {label: 'About Me', key: KEYS.ABOUT_ME_BUSINESS},
     {label: 'Skills', key: KEYS.SKILLS},
