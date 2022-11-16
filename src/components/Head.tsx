@@ -7,7 +7,7 @@ const Head = () => {
   const title = DATA.PERSONAL.name
   const description = DATA.PERSONAL.description.CHILL
   const image = getAssetURL('images/profile_pixel_LQ.png')
-  const url = 'https://www.mariopayan.com/'
+  const url = DATA.PERSONAL.url
 
   return (
     <Helmet helmetData={new HelmetData({})}>
