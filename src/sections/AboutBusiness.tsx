@@ -57,7 +57,7 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
           image={getAssetURL('images/profile_LQ.jpg')}
           content={
             <>
-              <Title label="Hey! I'm Mario Payan" />
+              <Title label={`Hey! I'm ${DATA.PERSONAL.name}`} />
               <Typography>{DATA.PERSONAL.description.BUSINESS}</Typography>
             </>
           }/>

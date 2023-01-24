@@ -8,7 +8,7 @@ const Experience = (): JSX.Element => {
   sectionTitle(KEYS.EXPERIENCE)
 
   const colors = {
-    [getKeyFromLabel('Redux')]: 'rgba(9, 66, 156, 0.5)',
+    [getKeyFromLabel('Redux (Wellplayed)')]: 'rgba(9, 66, 156, 0.5)',
     [getKeyFromLabel('Deft')]: 'rgba(0, 255, 255, 0.5)',
     [getKeyFromLabel('Alert Logic')]: 'rgba(254, 97, 22, 0.5)',
     [getKeyFromLabel('CIER-Sur')]: 'rgba(142, 36, 170, 0.5)',

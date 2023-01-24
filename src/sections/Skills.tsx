@@ -1,5 +1,5 @@
-import {useTheme} from '@mui/material'
 import React from 'react'
+import {useTheme} from '@mui/material'
 
 import DATA, {KEYS} from '../API/data'
 import SkillIconCards from '../components/SkillIconCards'

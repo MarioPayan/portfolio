@@ -8,9 +8,9 @@ import {
   TimelineDot,
   timelineItemClasses
 } from '@mui/lab'
-import {Box, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, Typography} from '@mui/material'
+import {Box, Divider, Grid, List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import {KeyboardDoubleArrowRight} from '@mui/icons-material'
-import {getKeyFromLabel} from '../utils/utils'
+import {dateDiff, getKeyFromLabel, RobotoTypography} from '../utils/utils'
 
 export type TimeLineItem = {where: string; from: string; to: string; position: string; achievements: string[]}
 export type Colors = {[key: string]: string}
@@ -27,7 +27,7 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
     },
   }
 
-  const DownText = ({text}: {text: string}) => <span style={{opacity: '0.7'}}>{text}</span>
+  const DownText = ({text}: {text: string}) => <span style={{opacity: '0.5'}}>{text}</span>
 
   const changeDateFormat = (date: string) => {
     const [year, month] = date.split('-')
@@ -35,23 +35,12 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
     return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString('en-US', {month: 'short'})} ${year}`
   }
 
-  const dateDiff = (dateA: string, dateB: string): string => {
-    const getTime = (date: string): number => (date ? new Date(date).getTime() : new Date().getTime())
-    const daysDiff = Math.floor((getTime(dateB) - getTime(dateA)) / (1000 * 60 * 60 * 24))
-    let timeDiff = 'Just started'
-    const years = Math.floor(daysDiff / 365)
-    const yearsDiff = years >= 1 ? `${years} ${years === 1 ? 'year' : 'years'}` : ''
-    const months = Math.floor(daysDiff / 30) % 12
-    const monthsDiff = months >= 1 ? `${months} ${months === 1 ? 'month' : 'months'}` : ''
-    if (yearsDiff && monthsDiff) timeDiff = `${yearsDiff}, ${monthsDiff}`
-    else if (yearsDiff || monthsDiff) timeDiff = `${yearsDiff}${monthsDiff}`
-    return `(${timeDiff})`
-  }
+  const getLinearGradient = (item: TimeLineItem, percentage = 70) => `linear-gradient(90deg, ${colors[getKeyFromLabel(item.where)]} 0%, rgba(0,0,0,0) ${percentage}%)`
 
   return (
     <TimelineMUI sx={leftAlignTimeline}>
       {items.sort(sortFrom).map((item: TimeLineItem, i: number) => (
-        <TimelineItem key={i}>
+        <TimelineItem key={i} sx={{pb: 1}}>
           <TimelineSeparator>
             <TimelineDot color='primary'>
               <BulletIcon />
@@ -62,43 +51,43 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
             <Box
               position='absolute'
               sx={{
-                background: `linear-gradient(270deg, rgba(0,0,0,0) 20%, ${colors[getKeyFromLabel(item.where)]} 100%)`,
+                background: getLinearGradient(item),
                 height: 1,
                 width: 1,
                 zIndex: -1,
-                filter: 'blur(12px)',
+                filter: 'blur(14px)',
               }}></Box>
-            <Typography variant='h3' sx={{pl: 1, width: {xs: 'unset', sm: 'max-content'}}}>
+            <RobotoTypography variant='h4' sx={{pl: 1, width: {xs: 'unset', sm: 'max-content'}}}>
               {item.position}
-              <Divider />
-            </Typography>
+              <Divider sx={{height: 2, borderRadius: 10, background: getLinearGradient(item, 100)}} />
+            </RobotoTypography>
             <Grid item container sx={{pl: 4, width: {xs: 'unset', sm: 'max-content'}}}>
               <Grid item>
-                <Typography variant='h4'>
+                <RobotoTypography variant='h5'>
                   <DownText text='At' /> {item.where}
-                </Typography>
+                </RobotoTypography>
               </Grid>
               <Grid item display='flex'>
-                <Typography variant='body1' alignSelf='flex-end' sx={{pl: 1, pb: 0.4}}>
+                <RobotoTypography variant='h6' alignSelf='flex-end' sx={{pl: 1, pb: 0.4}}>
                   <DownText text='from' /> {changeDateFormat(item.from)} <DownText text='to' />{' '}
-                  {item.to ? changeDateFormat(item.to) : 'present'} {dateDiff(item.from, item.to)}
-                </Typography>
+                  {item.to ? changeDateFormat(item.to) : 'present'} {`(${dateDiff(item.from, item.to)})`}
+                </RobotoTypography>
               </Grid>
               <Grid item xs={12}>
-                <Divider />
+                <Divider sx={{height: 2, borderRadius: 10, background: getLinearGradient(item, 100)}} />
               </Grid>
             </Grid>
             <List dense>
               {item.achievements.map((achievement: string, i: number) => (
-                <ListItem key={i}>
+                <ListItem key={i} sx={{py: 0}}>
                   <ListItemIcon sx={{minWidth: 0, pr: 1}}>
                     <KeyboardDoubleArrowRight />
                   </ListItemIcon>
-                  <ListItemText primary={<Typography>{achievement}</Typography>} />
+                  <ListItemText primary={<RobotoTypography variant='h6'>{achievement}</RobotoTypography>} />
                 </ListItem>
               ))}
             </List>
-            <Divider />
+            <Divider sx={{height: 4, borderRadius: 10, background: getLinearGradient(item)}} />
           </TimelineContent>
         </TimelineItem>
       ))}

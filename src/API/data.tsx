@@ -1,4 +1,5 @@
 import {Mode} from '../utils/types'
+import {dateDiff} from '../utils/utils'
 
 type Personal = {
   name: string
@@ -62,8 +63,11 @@ const DATA: Data = {
     name: 'Mario Payan',
     url: 'https://www.mariopayan.com/',
     description: {
-      [KEYS.BUSINESS]:
-        'A Full Stack Tech Lead Software Developer with focus on software development, algorithms design, software as a service and clean code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing',
+      [KEYS.BUSINESS]: `A Full Stack Tech Lead Software Developer with ${dateDiff(
+        '2017-10',
+        '',
+        true
+      )} of experience with focus on software development, algorithms design, software as a service and clean code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing`,
       [KEYS.CHILL]:
         'A Colombian software developer, part-time empirical musician, hardcore gamer, unstoppable traveler, and according to my mom, I\'m really handsome too. ¯\\_(ツ)_/¯',
     },
@@ -203,7 +207,7 @@ const DATA: Data = {
       ],
     },
     {
-      where: 'Redux',
+      where: 'Redux (WellPlayed)',
       from: '2021-07',
       to: '',
       position: 'Tech-Lead Developer',
