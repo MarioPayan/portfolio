@@ -10,10 +10,11 @@ export type ImagesCard = {title: string; description: string; images: string[]; 
 const ImagesCard = ({title, description, images, onImage, social = {}}: ImagesCard) => {
   const carouselSettings: any = {
     autoPlay: true,
-    animation: 'fade' as 'slide' | 'fade',
+    animation: 'slide' as 'slide' | 'fade',
+    stopAutoPlayOnHover: true,
     indicators: false,
     duration: 500,
-    navButtonsAlwaysVisible: false,
+    navButtonsAlwaysVisible: true,
     navButtonsAlwaysInvisible: false,
     cycleNavigation: true,
     fullHeightHover: true,

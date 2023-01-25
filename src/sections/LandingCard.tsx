@@ -150,7 +150,7 @@ const LandingCard = ({section, setSection, mode}: LandingCard): JSX.Element => {
                 }
                 icon={createElement(getIcon(tab.label), {sx: {color: isLastTab(i) ? 'white' : 'unset'}})}
                 iconPosition='start'
-                sx={{fontWeight: 800, px: 2}}/>
+                sx={{fontWeight: 800, px: {xs: 0, sm: 2}, minWidth: {xs: 60, sm: 'auto'}}}/>
             ))}
           </Tabs>
         </Grid>

@@ -52,7 +52,7 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
     <Grid item container xs={12} spacing={4}>
       <Grid item container xs={12} justifyContent='center'>
         <CardItem
-          text={DATA.PERSONAL.name}
+          text='About me'
           section={KEYS.ABOUT_ME_BUSINESS}
           image={getAssetURL('images/profile_LQ.jpg')}
           content={
@@ -69,8 +69,8 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
           image={getAssetURL('images/profile_LQ.jpg')}
           content={
             <>
-              <Title label='Skills' />
-              <Typography>TODO: </Typography>
+              <Title label='I code anything!' />
+              <Typography>{DATA.PERSONAL.description.SKILLS}</Typography>
             </>
           }/>
       </Grid>
@@ -82,7 +82,7 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
           content={
             <>
               <Title label='Experience' />
-              <Typography>TODO: </Typography>
+              <Typography>{DATA.PERSONAL.description.EXPERIENCE}</Typography>
             </>
           }/>
       </Grid>
@@ -94,7 +94,7 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
           content={
             <>
               <Title label='Projects' />
-              <Typography>TODO: </Typography>
+              <Typography>{DATA.PERSONAL.description.PROJECTS}</Typography>
             </>
           }/>
       </Grid>
@@ -106,7 +106,7 @@ const AboutBusiness = ({setSection}: AboutBusiness): JSX.Element => {
           content={
             <>
               <Title label='Education' />
-              <Typography>TODO: </Typography>
+              <Typography>{DATA.PERSONAL.description.EDUCATION}</Typography>
             </>
           }/>
       </Grid>

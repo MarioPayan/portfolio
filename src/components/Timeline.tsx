@@ -57,20 +57,34 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
                 zIndex: -1,
                 filter: 'blur(14px)',
               }}></Box>
-            <RobotoTypography variant='h4' sx={{pl: 1, width: {xs: 'unset', sm: 'max-content'}}}>
+            <RobotoTypography
+              variant='h4'
+              sx={{pl: 1, width: {xs: 'unset', sm: 'max-content'}, typography: {sm: 'h4', xs: 'h6'}}}>
               {item.position}
               <Divider sx={{height: 2, borderRadius: 10, background: getLinearGradient(item, 100)}} />
             </RobotoTypography>
             <Grid item container sx={{pl: 4, width: {xs: 'unset', sm: 'max-content'}}}>
               <Grid item>
-                <RobotoTypography variant='h5'>
-                  <DownText text='At' /> {item.where}
+                <RobotoTypography variant='h5' sx={{typography: {sm: 'h5', xs: 'subtitle1'}}}>
+                  <DownText text='At ' />
+                  {item.where}
                 </RobotoTypography>
               </Grid>
-              <Grid item display='flex'>
-                <RobotoTypography variant='h6' alignSelf='flex-end' sx={{pl: 1, pb: 0.4}}>
-                  <DownText text='from' /> {changeDateFormat(item.from)} <DownText text='to' />{' '}
-                  {item.to ? changeDateFormat(item.to) : 'present'} {`(${dateDiff(item.from, item.to)})`}
+              <Grid item sx={{display: {sm: 'flex', xs: 'none'}}}>
+                <RobotoTypography
+                  variant='h6'
+                  alignSelf='flex-end'
+                  sx={{pl: 1, pb: 0.4, typography: {sm: 'h6', xs: 'body1'}}}>
+                  <DownText text='From' /> {changeDateFormat(item.from)} <DownText text='to ' />
+                  {item.to ? changeDateFormat(item.to) : 'present'}. {`(${dateDiff(item.from, item.to)})`}
+                </RobotoTypography>
+              </Grid>
+              <Grid item sx={{display: {sm: 'none', xs: 'flex'}}}>
+                <RobotoTypography
+                  variant='h6'
+                  alignSelf='flex-end'
+                  sx={{pl: 0.4, pb: 0.4, typography: {sm: 'h6', xs: 'subtitle2'}}}>
+                  <DownText text={dateDiff(item.from, item.to)} />
                 </RobotoTypography>
               </Grid>
               <Grid item xs={12}>
@@ -83,7 +97,12 @@ const Timeline = ({items, colors, BulletIcon}: Timeline): JSX.Element => {
                   <ListItemIcon sx={{minWidth: 0, pr: 1}}>
                     <KeyboardDoubleArrowRight />
                   </ListItemIcon>
-                  <ListItemText primary={<RobotoTypography variant='h6'>{achievement}</RobotoTypography>} />
+                  <ListItemText
+                    primary={
+                      <RobotoTypography variant='h6' sx={{typography: {sm: 'h6', xs: 'body1'}}}>
+                        {achievement}
+                      </RobotoTypography>
+                    }/>
                 </ListItem>
               ))}
             </List>

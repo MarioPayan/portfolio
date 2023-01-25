@@ -4,7 +4,7 @@ import {dateDiff} from '../utils/utils'
 type Personal = {
   name: string
   url: string
-  description: {[mode in any]: string}
+  description: {[section in any]: string}
 }
 type TechSoft = {title: string; skills: {title: string}[]}[]
 type ExperienceEducation = {where: string; from: string; to: string; position: string; achievements: string[]}[]
@@ -70,6 +70,10 @@ const DATA: Data = {
       )} of experience with focus on software development, algorithms design, software as a service and clean code. Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing`,
       [KEYS.CHILL]:
         'A Colombian software developer, part-time empirical musician, hardcore gamer, unstoppable traveler, and according to my mom, I\'m really handsome too. ¯\\_(ツ)_/¯',
+      [KEYS.SKILLS]: 'I like js and python',
+      [KEYS.EXPERIENCE]: 'I like experience',
+      [KEYS.PROJECTS]: 'I like projects',
+      [KEYS.EDUCATION]: 'I like education',
     },
   },
 

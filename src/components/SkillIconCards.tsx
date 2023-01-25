@@ -32,18 +32,20 @@ const SkillIconCards = ({categories, backgroundColor}: SkillIconCards): JSX.Elem
   )
 
   const SkillIconCard = ({title}: {title: string}) => (
-    <Box position='relative' sx={{width: 160, height: 140, ...grow}}>
+    <Box position='relative' sx={{width: {xs: 100, sm: 160}, height: {xs: 90, sm: 140}, ...grow}}>
       <Grid item container direction='column'>
         {getDevIconSrc(title) ? (
           <img alt={title} style={{height: 70, width: 'auto', zIndex: 2, paddingTop: 20}} src={getDevIconSrc(title)} />
         ) : (
           createElement(getIcon(title), {sx: {height: 70, width: 'auto', zIndex: 2, paddingTop: 0}})
         )}
-        <Grid item sx={{py: 1, px: 2}}>
+        <Grid item sx={{py: {xs: 0.3, sm: 1}, px: 2}}>
           <Divider />
         </Grid>
-
-        <Typography variant='h6' align='center' sx={{fontSize: 19, fontWeight: 600}}>
+        <Typography
+          variant='h6'
+          align='center'
+          sx={{fontSize: {xs: 14, sm: 19}, lineHeight: {xs: 1, sm: 'unset'}, fontWeight: 600}}>
           {title}
         </Typography>
       </Grid>
